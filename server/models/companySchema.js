@@ -1,0 +1,1 @@
+//company schema for particular user
