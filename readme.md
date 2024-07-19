@@ -54,7 +54,7 @@ Access the app in your web browser at `http://localhost:5173/`.
 
 ## Contributors
 
-- Sharya ([LinkedIn](https://www.linkedin.com/in/shaurya--jha/))
-- Name ([LinkedIn](https://www.linkedin.com/in/shaurya--jha/))
-- Name ([LinkedIn](https://www.linkedin.com/in/shaurya--jha/))
+- Sharya Jha ([LinkedIn](https://www.linkedin.com/in/shaurya--jha/))
+- Om Shankar Deshmukh ([LinkedIn](https://www.linkedin.com/in/om-shankar-deshmukh-7431b9245/))
+- Satyam Kumar ([LinkedIn](https://www.linkedin.com/in/satyamkumar1018/))
 
