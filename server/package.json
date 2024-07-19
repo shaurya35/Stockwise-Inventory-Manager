@@ -4,7 +4,9 @@
   "description": "Stockwise is a cutting-edge web application designed for efficient inventory management through advanced demand forecasting techniques. This project addresses the critical challenges organizations face in predicting demand, managing stock levels, and ensuring customer satisfaction.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
