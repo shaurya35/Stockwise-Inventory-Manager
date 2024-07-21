@@ -22,8 +22,14 @@
     "connect-flash": "^0.1.1",
     "connect-mongo": "^5.1.0",
     "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
     "express": "^4.19.2",
+<<<<<<< HEAD
+    "express-router": "^0.0.1",
+    "method-override": "^3.0.0",
+=======
     "express-session": "^1.18.0",
+>>>>>>> 05edf78354b595c483b86c98e84bb8e8920027d7
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.1",
     "nodemon": "^3.1.4",

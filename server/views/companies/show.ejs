@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="border:1px solid black">
+        <h1>Company</h1>
+        <p>Name : <%=company.name%></p>
+        <p>Address: <%=company.address%></p>
+    </div>
+
+    <h3>Add a new Stock</h3>
+    <form action="/api/companies/<%=company._id%>/stocks" method="post" >
+        <input type="text" name="name" placeholder="enter the stock name" required> <br>
+        <input type="number" name="totalUnits" placeholder="enter the total number of units" required> <br>
+        <input type="number" name="unitsSold" placeholder="enter numbeer of units sold" required> <br>
+        <button>add a new stock</button>
+    </form>
+
+    <h2>Stocks</h2>
+    <%for(stock of company.stocks){%>
+        <%if(stock){%>
+            <div style="border:1px solid grey">
+                <p><%=stock.name%>, <%=stock.totalUnits%>, <%=stock.unitsSold%></p>
+                <a href="/api/companies/<%=company._id%>/stocks/<%=stock._id%>/edit">Edit</a>
+                <form action="/api/companies/<%=company._id%>/stocks/<%=stock._id%>?_method=DELETE" method="post">
+                    <button>Delete</button>
+                </form>
+            </div>
+        <%}%>
+    <%}%>
+</body>
+</html>
