@@ -1,0 +1,259 @@
+/* app header */
+.app_header{
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* header */
+.header{
+    height: 7rem;
+    width: 65rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* header-left */
+.header_left{
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--headline);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.left_logo{
+    height: 3rem;
+    padding-right: 0.3rem;
+}
+
+/* header right */
+.header_right{
+    font-size: 1.10rem;
+    line-height: 1.2;
+    font-weight: 500;
+    color: var(--headline);
+}
+
+.right_list{
+    display: flex;
+    gap: 1.4rem;
+}
+
+.right_list a{
+    text-decoration: none;
+    color: var(--headline);
+}
+
+.right_list a:hover{
+    color: #a7a9be;
+}
+
+/*media query*/
+
+@media(max-width: 1024px){
+    .right_list{
+        margin-right: 1rem;
+    }
+}
+
+@media (max-width: 768px){
+    .header{
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .header_left{
+        padding: 1rem;
+    }
+
+    .left_logo{
+        height: 2rem;
+    }
+
+    .header_right{
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 1rem;
+    }
+
+    .right_list{
+        display: flex;
+        gap: 1rem;
+    }
+}
+
+/* app main */
+
+.app_main{
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* main */
+.main{
+    margin-top: 5rem;
+    height: 28.188rem;
+    width: 65rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* background-color: red; */
+}
+
+/*main left*/
+.main_left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.3rem;
+}
+
+.main_left_heading{
+    color: var(--headline);
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+    font-weight: 700;
+}
+
+.main_left_paragraph{
+    color: var(--paragraph);
+    font-size: 1.3rem;
+    font-weight: 400;
+}   
+
+.main_left_button{
+    color: var(--button-text);
+    background-color: var(--button);
+    border: 0.15rem solid var(--background-color);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/*main right*/
+.main_right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right_image{
+    height: 25rem;
+}
+
+
+/*main media query*/
+@media (max-width: 1024px) {
+    .main{
+        margin-top: 3rem;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap-reverse;
+    }
+    .main_left_heading{
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+    .main_left_paragraph{
+        font-size: 1.2rem;
+    }  
+    .main_left_button{
+        padding: 1rem 1.2rem;
+        font-size: 1.1rem;
+    }
+    .right_image{
+        height: 20rem;
+    }
+}
+
+@media (max-width: 850px){
+    .main{
+        margin-top: 1rem;
+        height: 45rem;
+    }
+    .main_left_heading{
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+    }
+    .main_left_paragraph{
+        font-size: 1.2rem;
+    }  
+    .main_left_button{
+        padding: 0.8rem 1rem;
+        font-size: 1.1rem;
+    }
+    .right_image{
+        height: 17rem;
+    }
+}
+
+/* gap section */
+.app_gap{
+    height: 7rem;
+    background-color: var(--background-color);
+}
+
+@media (max-width: 850px){
+    .app_gap{
+        height: 2rem;
+    }
+}
+
+/* section  */
+.app_section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}
+
+/* section  */
+.section{
+    background-color: var(--headline);
+    height: 50rem;
+    width: 65rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.section_heading{
+    color: var(--background-color);
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+    font-weight: 700;
+    background-color: blue;
+    /* margin-top: 2rem; */
+}
+
+.section_paragraph{
+    color: var(--sub-headline);
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+.section_blocks{
+    
+}

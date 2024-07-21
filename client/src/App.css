@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Sora:wght@100..800&display=swap");
+
+.outfit {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.sora {
+  font-family: "Sora", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+:root {
+  --background-color: #0f0e17;
+  --headline: #fffffe;
+  --paragraph: #a7a9be;
+  --button: #ff8906;
+  --button-text: #fffffe;
+  --sub-headline: #2e2f3e;
+}
