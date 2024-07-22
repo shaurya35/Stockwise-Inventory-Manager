@@ -1,0 +1,78 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(0.3rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.contact-form {
+    background-color: #0f0e17;
+    padding: 1.25rem; 
+    border-radius: 0.5rem; 
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); 
+    color: var(--headline);
+    width: 18.75rem; 
+    position: relative;
+}
+
+.contact-form h2 {
+    margin-top: 0;
+    margin-bottom: 0.3rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.625rem; 
+    margin-top: 0.625rem; 
+    margin-bottom: 0.625rem; 
+    margin-left: 0;
+    margin-right: 0;
+    border: 1px solid black;
+    border-radius: 0.25rem; 
+    background: none;
+    color: var(--headline);
+    font-size: 0.875rem; 
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--paragraph);
+}
+
+.contact-form textarea {
+    height: 6.25rem;
+    resize: none;
+}
+
+.contact-form button[type="submit"] {
+    background-color: var(--button);
+    color: var(--headline);
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem; 
+    padding-left: 0.625rem; 
+    padding-right: 0.625rem; 
+    border: none;
+    border-radius: 0.25rem; 
+    cursor: pointer;
+    font-size: 0.875rem;
+    margin-top: 0.3rem; 
+}
+
+.contact-form .close-button {
+    position: absolute;
+    top: 0.625rem; 
+    right: 0.625rem; 
+    background: none;
+    border: none;
+    color: var(--headline);
+    font-size: 1.25rem; 
+    cursor: pointer;
+}
