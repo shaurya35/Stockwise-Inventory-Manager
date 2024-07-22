@@ -12,6 +12,10 @@
   font-style: normal;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background-color: #0f0e17;
   --headline: #fffffe;
