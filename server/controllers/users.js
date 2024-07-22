@@ -1,6 +1,9 @@
 const User = require("../models/userSchema.js");
 
 //render signup page
+module.exports.renderSignupForm = (req, res) => {
+    res.render("../user/signup.ejs");
+};
 
 //signup
 module.exports.signup =async(req ,res)=>{
@@ -13,23 +16,23 @@ module.exports.signup =async(req ,res)=>{
         if(err){
             return next(err); 
         }
-    // req.flash("success" , "Welcome to StockWise !");
-    res.redirect("/");
+    res.redirect("/api/companies");
     });
     
     }catch(e){
-        req.flash("error" , e.message);
         res.redirect("/signup"); 
     }
     
 };
 
 //render login page
+module.exports.renderLoginForm = (req, res) => {
+    res.render("../user/login.ejs");
+};
 
 //login
 module.exports.login = async(req ,res)=>{
-    // req.flash("success" , "Welcome back to StockWise !");
-    let redirectUrl = res.locals.redirectUrl || "/";
+    let redirectUrl = res.locals.redirectUrl || "/api/companies";
     res.redirect(redirectUrl);
 };
 
@@ -39,7 +42,6 @@ module.exports.logout =  (req ,res)=>{
         if(err){
             return next(err);
         }
-        // req.flash("success" , "you are logged out");
-        res.redirect("/");
+        res.redirect("/api/companies");
     })
 };
