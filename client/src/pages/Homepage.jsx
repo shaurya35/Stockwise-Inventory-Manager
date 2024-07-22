@@ -1,6 +1,6 @@
 import "../styles/static/Homepage.css";
 import logo from "../assets/logo.svg";
-import img from "../assets/img.svg"
+import img from "../assets/img.svg";
 
 export default function Homepage() {
   return (
@@ -25,8 +25,16 @@ export default function Homepage() {
       <main className="app_main">
         <div className="main">
           <div className="main_left">
-            <div className="main_left_heading sora">Revolutionize Your <br /> Inventory Management <br /> with Stockwise</div>
-            <div className="main_left_paragraph outfit">The ultimate solution for seamless Inventory <br />  management and demand forecasting. <br /> Say goodbye to stockouts and overstocking, <br /> and embrace a smarter way to manage your <br /> inventory with Stockwise</div>
+            <div className="main_left_heading sora">
+              Revolutionize Your <br /> Inventory Management <br /> with
+              Stockwise
+            </div>
+            <div className="main_left_paragraph outfit">
+              The ultimate solution for seamless Inventory <br /> management and
+              demand forecasting. <br /> Say goodbye to stockouts and
+              overstocking, <br /> and embrace a smarter way to manage your{" "}
+              <br /> inventory with Stockwise
+            </div>
             <button className="main_left_button sora">Get Started</button>
           </div>
           <div className="main_right">
@@ -35,32 +43,33 @@ export default function Homepage() {
         </div>
       </main>
 
-      <div className="app_gap">
-
-      </div>
+      <div className="app_gap"></div>
       {/* section */}
       <section className="app_section">
         <div className="section">
-        <div className="section_heading sora">What we offer?</div>
-        <div className="section_paragraph outfit">Comprehensive inventory management solution designed to streamline <br /> your operations and boost your business efficiency.</div>
-        <div className="section_blocks">
-          <div className="blocks_block1">
-            <div className="block_heading"></div>
-            <div className="block_content"></div>
+          <div className="section_heading sora">What we offer?</div>
+          <div className="section_paragraph outfit">
+            Comprehensive inventory management solution designed to streamline{" "}
+            <br /> your operations and boost your business efficiency.
           </div>
-          <div className="blocks_block2">
-          <div className="block_heading"></div>
-          <div className="block_content"></div>
+          <div className="section_blocks">
+            <div className="blocks_block">
+              <div className="block_heading">Real-Time Inventory Tracking</div>
+              <div className="block_content">Stay updated with the latest inventory levels in real-time. Our system provides accurate and instant tracking of your stock, ensuring you never run out of essential items.</div>
+            </div>
+            <div className="blocks_block">
+              <div className="block_heading">Automated Order Management</div>
+              <div className="block_content">Simplify your order processing with our automated workflows. From purchase orders to sales orders, our application handles everything seamlessly, reducing manual effort and errors.</div>
+            </div>
+            <div className="blocks_block">
+              <div className="block_heading">Advanced Reporting and Analytics</div>
+              <div className="block_content">Gain valuable insights into your business operations with our advanced reporting tools. Analyze sales trends, monitor stock levels, and make data-driven decisions to optimize your inventory.</div>
+            </div>
+            <div className="blocks_block">
+              <div className="block_heading">Predictive Analysis</div>
+              <div className="block_content">Our inventory management application provides you with a wealth of analytics data, enabling you to forecast demand, optimize stock levels, and anticipate market trends. </div>
+            </div>
           </div>
-          <div className="blocks_block3">
-          <div className="block_heading"></div>
-          <div className="block_content"></div>
-          </div>
-          <div className="blocks_block4">
-          <div className="block_heading"></div>
-          <div className="block_content"></div>
-          </div>
-        </div>
         </div>
       </section>
     </>

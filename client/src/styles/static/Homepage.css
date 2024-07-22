@@ -223,13 +223,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    /* background-color: red; */
 }
 
 /* section  */
 .section{
     background-color: var(--headline);
-    height: 50rem;
+    height: 65rem;
     width: 65rem;
     display: flex;
     justify-content: space-evenly;
@@ -243,7 +243,7 @@
     font-size: 2.5rem;
     line-height: 3.5rem;
     font-weight: 700;
-    background-color: blue;
+    /* background-color: blue; */
     /* margin-top: 2rem; */
 }
 
@@ -255,5 +255,92 @@
 }
 
 .section_blocks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    /* background-color: gray; */
+    flex-wrap: wrap;
+    height: 45rem;
+    width: inherit;
+}
+
+.blocks_block{
+    width: 27.4rem;
+    height: 19rem;
+    border: 2px solid var(--background-color);
+    background-color: var(--background-color);
+    border-radius: 0.2rem;
+    padding: 2.5rem;
+    margin: 1rem;
+}
+
+.block_heading{
+    font-size: 2rem;
+    line-height: 1.875rem;
+    font-weight: 300;
+    color: var(--headline);
+    padding-bottom: 1rem;
+}
+
+.block_content{
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--paragraph);
+    line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+
+    .section{
+        height: 58rem;
+    }
+
+    .section_heading{
+        font-size: 2rem;
+    }
+
+    .section_paragraph{
+        font-size: 1.2rem;
+    }
+
+    .section_blocks{
+        height: 45rem;
+        width: 95vw;
+    }
+
+    .blocks_block{
+        width: 25.4rem;
+        height: 19rem;
+        border-radius: 0.2rem;
+        padding: 2.5rem;
+        margin: 1rem;
+    }
+}
+
+@media (max-width: 768px){
+    .section_heading{
+        font-size: 1.8rem;
+    }
+
+    .section_paragraph{
+        font-size: 1.2rem;
+    }
+
+    .blocks_block{
+        width: 25.4rem;
+        height: 17rem;
+        padding: 2rem;
+        margin: 0.8rem;
+    }
+
+    .block_heading{
+        font-size: 1.4rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .block_content{
+        font-size: 1.1rem;
+    }
     
 }
