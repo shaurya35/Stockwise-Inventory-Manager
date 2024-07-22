@@ -1,34 +1,35 @@
 const express = require("express");
 const router = express.Router();
-const {
-  createCompany,
-  getCompanies,
-  getCompany,
-  updateCompany,
-  deleteCompany,
-  getNewCompany,
-  editCompany
-} = require("../controllers/companyController.js");
+const wrapAsync = require("../middlewares/wrapAsync.js");
+const ExpressError = require("../middlewares/ExpressError.js");
+const Company = require("../models/companySchema.js");
+const companyController = require("../controllers/companyController.js");
+const {isLoggedIn , isOwner } = require("../middlewares/middleware.js");
 
+
+
+
+router.route("/")
 //Index Route
-router.get("/", getCompanies);
+.get( wrapAsync (companyController.getCompanies) )
+ //Create Route
+.post(wrapAsync(companyController.createCompany) );
 
 //New Route
-router.get("/new", getNewCompany);
+router.get("/new", isLoggedIn , companyController.getNewCompany);
 
-//Create Route
-router.post("/", createCompany);
+
+router.route("/:id")
+//Show Route
+.get(wrapAsync(companyController.getCompany) )
+//Update Route
+.put(isLoggedIn, wrapAsync(companyController.updateCompany))
+//Delete Route
+.delete(isLoggedIn, wrapAsync(companyController.deleteCompany));
+
 
 //Edit Route
-router.get("/:id/edit", editCompany);
+router.get("/:id/edit", wrapAsync(companyController.editCompany));
 
-//Update Route
-router.put("/:id", updateCompany);
-
-//Show Route
-router.get("/:id/", getCompany);
-
-//Delete Route
-router.delete("/:id", deleteCompany);
 
 module.exports = router;

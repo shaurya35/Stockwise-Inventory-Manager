@@ -3,20 +3,20 @@ const wrapAsync = require("../middlewares/wrapAsync.js");
 const ExpressError = require("../middlewares/ExpressError.js");
 
 //get all stocks
-const getStocks = wrapAsync(async (req, res) => {
+module.exports.getStocks =async (req, res) => {
   let { id } = req.params;
   let company = Company.findById(id);
   let stocks = Company.stocks;
   res.json(stocks);
-});
+};
 
 //get a new stock form
-const getNewStock = wrapAsync((req, res) => {
+module.exports.getNewStock = (req, res) => {
   res.render("./stocks/new.ejs");
-});
+};
 
 //create a new stock
-const createStock = wrapAsync(async (req, res) => {
+module.exports.createStock =async (req, res) => {
   let { id } = req.params;
   let { name, totalUnits, unitsSold } = req.body;
   let stock = { name, totalUnits, unitsSold };
@@ -24,10 +24,10 @@ const createStock = wrapAsync(async (req, res) => {
   company.stocks.push(stock);
   await Company.findByIdAndUpdate(id, company);
   res.redirect(`/api/companies/${id}`);
-});
+};
 
 //get new edit stock form
-const editNewStock = wrapAsync(async (req, res) => {
+module.exports.editNewStock =async (req, res) => {
   let { id, stockId } = req.params;
   let company = await Company.findById(id);
   let stock;
@@ -40,9 +40,10 @@ const editNewStock = wrapAsync(async (req, res) => {
     company,
     stock,
   });
-});
+};
+
 //update a stock
-const updateStock = wrapAsync(async (req, res) => {
+module.exports.updateStock =async (req, res) => {
   let { id, stockId } = req.params;
   console.log(id, stockId);
   const { name, totalUnits, unitsSold } = req.body;
@@ -59,10 +60,10 @@ const updateStock = wrapAsync(async (req, res) => {
     { new: true }
   );
   res.redirect(`/api/companies/${id}`);
-});
+};
 
 //delete a company
-const deleteStock = wrapAsync(async (req, res) => {
+module.exports.deleteStock = async (req, res) => {
   let { id, stockId } = req.params;
   const company = await Company.findByIdAndUpdate(
     id,
@@ -70,13 +71,4 @@ const deleteStock = wrapAsync(async (req, res) => {
     { new: true }
   );
   res.redirect(`/api/companies/${id}`);
-});
-
-module.exports = {
-  createStock,
-  updateStock,
-  deleteStock,
-  getNewStock,
-  editNewStock,
-  getStocks,
 };
