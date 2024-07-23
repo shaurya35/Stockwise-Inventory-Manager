@@ -1,0 +1,64 @@
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: calc(100vh - 7rem);
+    background-color: var(--background-color);
+}
+
+.auth-form {
+    background-color: #0f0e17;
+    margin-top: 13vh;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    color: var(--headline);
+    width: 25rem;
+    position: relative;
+    border: 1px solid var(--paragraph);
+}
+
+.auth-form h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 0.875rem;
+    margin-top: 0.875rem;
+    margin-bottom: 0.875rem;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    background: none;
+    color: var(--headline);
+    font-size: 1rem;
+}
+
+.auth-form input::placeholder {
+    color: var(--paragraph);
+}
+
+.auth-form button[type="submit"] {
+    background-color: var(--button);
+    color: var(--headline);
+    padding-top: 0.875rem;
+    padding-bottom: 0.875rem;
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.auth-form p {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+}
+
+.auth-form p a {
+    color: var(--button);
+    text-decoration: none;
+}

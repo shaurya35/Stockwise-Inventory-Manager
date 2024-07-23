@@ -1,41 +1,19 @@
-// Homepage.jsx
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import "../styles/static/Homepage.css";
 import logo from "../assets/logo.svg";
 import img from "../assets/img.svg";
 import linkedin from "../assets/linkedin.svg";
-import ContactForm from '../components/Contactform';
 
 export default function Homepage() {
-    const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+    const navigate = useNavigate();
 
-    const openContactForm = (e) => {
-        e.preventDefault();
-        setIsContactFormOpen(true);
-    };
-
-    const closeContactForm = () => {
-        setIsContactFormOpen(false);
+    const handleGetStartedClick = () => {
+        navigate('/signup');
     };
 
     return (
         <>
-            {/* header */}
-            <header className="app_header">
-                <div className="header sora">
-                    <div className="header_left">
-                        <img src={logo} className="left_logo" alt="Logo" />
-                        Stockwise
-                    </div>
-                    <div className="header_right">
-                        <ul className="right_list">
-                            <a href="#x1">Features</a>
-                            <a href="#" onClick={openContactForm}>Contact Us</a>
-                        </ul>
-                    </div>
-                </div>
-            </header>
-
             {/* main */}
             <main className="app_main">
                 <div className="main">
@@ -50,7 +28,9 @@ export default function Homepage() {
                             overstocking, <br /> and embrace a smarter way to manage your{" "}
                             <br /> inventory with Stockwise
                         </div>
-                        <button className="main_left_button sora">Get Started</button>
+                        <button className="main_left_button sora" onClick={handleGetStartedClick}>
+                            Get Started
+                        </button>
                     </div>
                     <div className="main_right">
                         <img src={img} className="right_image" alt="Image" />
@@ -69,7 +49,7 @@ export default function Homepage() {
                     </div>
                     <div className="section_blocks">
                         <div className="blocks_block">
-                            <div className="block_heading" >Real-Time Inventory Tracking</div>
+                            <div className="block_heading">Real-Time Inventory Tracking</div>
                             <div className="block_content">
                                 Stay updated with the latest inventory levels in real-time. Our
                                 system provides accurate and instant tracking of your stock,
@@ -85,9 +65,7 @@ export default function Homepage() {
                             </div>
                         </div>
                         <div className="blocks_block">
-                            <div className="block_heading">
-                                Advanced Reporting and Analytics
-                            </div>
+                            <div className="block_heading">Advanced Reporting and Analytics</div>
                             <div className="block_content">
                                 Gain valuable insights into your business operations with our
                                 advanced reporting tools. Analyze sales trends, monitor stock
@@ -120,7 +98,7 @@ export default function Homepage() {
                             <li className="list_items">
                                 <a
                                     href="https://www.linkedin.com/in/shaurya--jha/"
-                                    className="items_links"
+                                    className="items_links" target='_blank'
                                 >
                                     Shaurya Jha
                                     <img src={linkedin} className="items_linkedin" alt="linkedin" />
@@ -129,7 +107,7 @@ export default function Homepage() {
                             <li className="list_items">
                                 <a
                                     href="https://www.linkedin.com/in/om-shankar-deshmukh-7431b9245/"
-                                    className="items_links"
+                                    className="items_links" target='_blank'
                                 >
                                     Om Shankar Deshmukh
                                     <img src={linkedin} className="items_linkedin" alt="linkedin" />
@@ -138,7 +116,7 @@ export default function Homepage() {
                             <li className="list_items">
                                 <a
                                     href="https://www.linkedin.com/in/om-shankar-deshmukh-7431b9245/"
-                                    className="items_links"
+                                    className="items_links" target='_blank'
                                 >
                                     Satyam Kumar
                                     <img src={linkedin} className="items_linkedin" alt="linkedin" />
@@ -148,9 +126,6 @@ export default function Homepage() {
                     </div>
                 </div>
             </footer>
-
-            {/* Contact Form */}
-            <ContactForm isOpen={isContactFormOpen} onClose={closeContactForm} />
         </>
     );
 }
