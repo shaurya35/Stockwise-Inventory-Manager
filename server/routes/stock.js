@@ -2,34 +2,24 @@ const express = require("express");
 const router = express.Router({ mergeParams: true });
 const Company = require("../models/companySchema.js");
 const wrapAsync = require("../middlewares/wrapAsync.js");
-const stockController = require("../controllers/stockController.js");
-const {isLoggedIn , isOwner } = require("../middlewares/middleware.js");
+const { isLoggedIn, isOwner } = require("../middlewares/middleware.js");
+const {
+  getAllStocks,
+  getStock,
+  createStock,
+  updateStock,
+  deleteStock,
+} = require("../controllers/stockController.js");
 
-
-
-
-router.route("/")
 //get all the stocks
-.get(wrapAsync(stockController.getAllStocks))
+router.get("/", wrapAsync(getAllStocks));
 //Create a new stock
-.post(isLoggedIn,wrapAsync(stockController.createStock) );
-
-
-//Getting a form to create a new stock EJS CODE
-// router.get("/stocks/new",isLoggedIn, stockController.getNewStock);
-
-
-router.route("/:stockId")
+router.post("/", isLoggedIn, wrapAsync(createStock));
 //get a single stock
-.get(wrapAsync(stockController.getStock))
+router.get("/:stockId", wrapAsync(getStock));
 //Update a stock
-.put(wrapAsync(stockController.updateStock) )
+router.put("/:stockId", wrapAsync(updateStock));
 //Delete a  stock
-.delete(isLoggedIn,wrapAsync(stockController.deleteStock) );
-
-
-//Accessing a form to edit stock information with pre-filled input values. EJS CODE
-// router.get("/:stockId/edit", wrapAsync(stockController.editNewStock));
-
+router.delete("/:stockId", isLoggedIn, wrapAsync(deleteStock));
 
 module.exports = router;

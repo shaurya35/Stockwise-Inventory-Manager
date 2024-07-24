@@ -1,8 +1,13 @@
 const Company = require("../models/companySchema.js");
+const mongoose = require("mongoose");
 
 //get all stocks
-module.exports.getAllStocks = async (req, res) => {
+const getAllStocks = async (req, res) => {
   let { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "No such valid id" });
+  }
   let company = await Company.findById(id);
   if (!company) {
     return res.status(400).json({ error: "No such company" });
@@ -11,9 +16,15 @@ module.exports.getAllStocks = async (req, res) => {
 };
 
 //get a single stock
-module.exports.getStock = async (req, res) => {
+const getStock = async (req, res) => {
   let { id, stockId } = req.params;
 
+  if (
+    !mongoose.Types.ObjectId.isValid(id) ||
+    !mongoose.Types.ObjectId.isValid(stockId)
+  ) {
+    return res.status(400).json({ error: "No such valid id" });
+  }
   const company = await Company.findOne({ _id: id, "stocks._id": stockId });
   if (!company) {
     return res.status(400).json({ error: "No such company" });
@@ -27,8 +38,11 @@ module.exports.getStock = async (req, res) => {
 };
 
 //create a new stock
-module.exports.createStock = async (req, res) => {
+const createStock = async (req, res) => {
   let { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "No such valid id" });
+  }
   let { name, totalUnits, unitsSold } = req.body;
   let stock = { name, totalUnits, unitsSold };
   let company = await Company.findById(id);
@@ -41,8 +55,14 @@ module.exports.createStock = async (req, res) => {
 };
 
 //update a stock
-module.exports.updateStock = async (req, res) => {
+const updateStock = async (req, res) => {
   let { id, stockId } = req.params;
+  if (
+    !mongoose.Types.ObjectId.isValid(id) ||
+    !mongoose.Types.ObjectId.isValid(stockId)
+  ) {
+    return res.status(400).json({ error: "No such valid id" });
+  }
   const { name, totalUnits, unitsSold } = req.body;
 
   const updateFields = {};
@@ -63,8 +83,14 @@ module.exports.updateStock = async (req, res) => {
 };
 
 //delete a stock
-module.exports.deleteStock = async (req, res) => {
+const deleteStock = async (req, res) => {
   let { id, stockId } = req.params;
+  if (
+    !mongoose.Types.ObjectId.isValid(id) ||
+    !mongoose.Types.ObjectId.isValid(stockId)
+  ) {
+    return res.status(400).json({ error: "No such valid id" });
+  }
   const company = await Company.findByIdAndUpdate(
     id,
     { $pull: { stocks: { _id: stockId } } },
@@ -73,27 +99,10 @@ module.exports.deleteStock = async (req, res) => {
   res.status(200).json(company);
 };
 
-
-
-/* EJS code */
-
-// //get a new stock form
-// module.exports.getNewStock = (req, res) => {
-//   res.render("/stocks/new.ejs");
-// };
-
-// //get new edit stock form
-// module.exports.editNewStock = async (req, res) => {
-//   let { id, stockId } = req.params;
-//   let company = await Company.findById(id);
-//   let stock;
-//   for (stockObj of company.stocks) {
-//     if (stockObj._id == stockId) {
-//       stock = stockObj;
-//     }
-//   }
-//   res.render("./companies/stockedit.ejs", {
-//     company,
-//     stock,
-//   });
-// };
+module.exports = {
+  getAllStocks,
+  getStock,
+  createStock,
+  updateStock,
+  deleteStock,
+};
