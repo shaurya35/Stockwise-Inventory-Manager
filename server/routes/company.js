@@ -15,8 +15,9 @@ router.route("/")
  //Create Route
 .post(wrapAsync(companyController.createCompany) );
 
-//New Route
-router.get("/new", isLoggedIn , companyController.getNewCompany);
+//EJS CODE
+//Get a form to create a new company
+// router.get("/new", isLoggedIn , companyController.getNewCompany);
 
 
 router.route("/:id")
@@ -27,9 +28,9 @@ router.route("/:id")
 //Delete Route
 .delete(isLoggedIn, wrapAsync(companyController.deleteCompany));
 
-
-//Edit Route
-router.get("/:id/edit", wrapAsync(companyController.editCompany));
+//EJS CODE
+//Accessing a form to edit company information with pre-filled input values.
+// router.get("/:id/edit", wrapAsync(companyController.editCompany));
 
 
 module.exports = router;

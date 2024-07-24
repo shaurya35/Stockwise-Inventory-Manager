@@ -9,25 +9,27 @@ const {isLoggedIn , isOwner } = require("../middlewares/middleware.js");
 
 
 router.route("/")
-//Index Route
-.get(wrapAsync(stockController.getStocks))
-//Create Route
+//get all the stocks
+.get(wrapAsync(stockController.getAllStocks))
+//Create a new stock
 .post(isLoggedIn,wrapAsync(stockController.createStock) );
 
 
-//New Route
-router.get("/stocks/new",isLoggedIn, stockController.getNewStock);
+//Getting a form to create a new stock EJS CODE
+// router.get("/stocks/new",isLoggedIn, stockController.getNewStock);
 
 
 router.route("/:stockId")
-//Put Route
+//get a single stock
+.get(wrapAsync(stockController.getStock))
+//Update a stock
 .put(wrapAsync(stockController.updateStock) )
-//Delete Route
+//Delete a  stock
 .delete(isLoggedIn,wrapAsync(stockController.deleteStock) );
 
 
-//Edit Route
-router.get("/:stockId/edit", wrapAsync(stockController.editNewStock));
+//Accessing a form to edit stock information with pre-filled input values. EJS CODE
+// router.get("/:stockId/edit", wrapAsync(stockController.editNewStock));
 
 
 module.exports = router;
