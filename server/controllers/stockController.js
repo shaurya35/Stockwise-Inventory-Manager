@@ -1,102 +1,202 @@
-const Company = require("../models/companySchema.js");
+// const Stock = require("../models/stockModel.js");
+// const mongoose = require("mongoose");
+
+// // Get all stocks for a company
+// const getAllStocks = async (req, res) => {
+//   const { companyId } = req.params;
+//   if (!mongoose.Types.ObjectId.isValid(companyId)) {
+//     return res.status(400).json({ error: "Invalid company ID" });
+//   }
+//   try {
+//     const stocks = await Stock.find({ company: companyId });
+//     res.status(200).json(stocks);
+//   } catch (error) {
+//     res.status(400).json({ error: error.message });
+//   }
+// };
+
+// // Get a single stock
+// const getStock = async (req, res) => {
+//   const { companyId, stockId } = req.params;
+//   if (!mongoose.Types.ObjectId.isValid(companyId) || !mongoose.Types.ObjectId.isValid(stockId)) {
+//     return res.status(400).json({ error: "Invalid IDs" });
+//   }
+//   try {
+//     const stock = await Stock.findOne({ _id: stockId, company: companyId });
+//     if (!stock) {
+//       return res.status(404).json({ error: "Stock not found" });
+//     }
+//     res.status(200).json(stock);
+//   } catch (error) {
+//     res.status(400).json({ error: error.message });
+//   }
+// };
+
+// // Create a new stock
+// const createStock = async (req, res) => {
+//   const { companyId } = req.params;
+//   if (!mongoose.Types.ObjectId.isValid(companyId)) {
+//     return res.status(400).json({ error: "Invalid company ID" });
+//   }
+//   const { name, totalUnits, unitsSold, pricePerUnit } = req.body;
+//   try {
+//     const stock = new Stock({
+//       name,
+//       totalUnits,
+//       unitsSold,
+//       pricePerUnit,
+//       company: companyId,
+//     });
+//     await stock.save();
+//     res.status(201).json(stock);
+//   } catch (error) {
+//     res.status(400).json({ error: error.message });
+//   }
+// };
+
+// // Update a stock
+// const updateStock = async (req, res) => {
+//   const { companyId, stockId } = req.params;
+//   if (!mongoose.Types.ObjectId.isValid(companyId) || !mongoose.Types.ObjectId.isValid(stockId)) {
+//     return res.status(400).json({ error: "Invalid IDs" });
+//   }
+//   try {
+//     const stock = await Stock.findOneAndUpdate(
+//       { _id: stockId, company: companyId },
+//       req.body,
+//       { new: true }
+//     );
+//     if (!stock) {
+//       return res.status(404).json({ error: "Stock not found" });
+//     }
+//     res.status(200).json(stock);
+//   } catch (error) {
+//     res.status(400).json({ error: error.message });
+//   }
+// };
+
+// // Delete a stock
+// const deleteStock = async (req, res) => {
+//   const { companyId, stockId } = req.params;
+//   if (!mongoose.Types.ObjectId.isValid(companyId) || !mongoose.Types.ObjectId.isValid(stockId)) {
+//     return res.status(400).json({ error: "Invalid IDs" });
+//   }
+//   try {
+//     const stock = await Stock.findOneAndDelete({ _id: stockId, company: companyId });
+//     if (!stock) {
+//       return res.status(404).json({ error: "Stock not found" });
+//     }
+//     res.status(200).json(stock);
+//   } catch (error) {
+//     res.status(400).json({ error: error.message });
+//   }
+// };
+
+// module.exports = {
+//   getAllStocks,
+//   getStock,
+//   createStock,
+//   updateStock,
+//   deleteStock,
+// };
+
+const Stock = require("../models/stockModel.js");
 const mongoose = require("mongoose");
 
-//get all stocks
+// Get all stocks for a company
 const getAllStocks = async (req, res) => {
-  let { id } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({ error: "No such valid id" });
+  const { companyId } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(companyId)) {
+    return res.status(400).json({ error: "Invalid company ID" });
   }
-  let company = await Company.findById(id);
-  if (!company) {
-    return res.status(400).json({ error: "No such company" });
+  try {
+    const stocks = await Stock.find({ company: companyId });
+    res.status(200).json(stocks);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
-  res.status(200).json(company.stocks);
 };
 
-//get a single stock
+// Get a single stock
 const getStock = async (req, res) => {
-  let { id, stockId } = req.params;
-
-  if (
-    !mongoose.Types.ObjectId.isValid(id) ||
-    !mongoose.Types.ObjectId.isValid(stockId)
-  ) {
-    return res.status(400).json({ error: "No such valid id" });
+  const { companyId, stockId } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(companyId) || !mongoose.Types.ObjectId.isValid(stockId)) {
+    return res.status(400).json({ error: "Invalid IDs" });
   }
-  const company = await Company.findOne({ _id: id, "stocks._id": stockId });
-  if (!company) {
-    return res.status(400).json({ error: "No such company" });
-  }
-  for (stock of company.stocks) {
-    if (stock._id == stockId) {
-      return res.status(200).json(stock);
+  try {
+    const stock = await Stock.findOne({ _id: stockId, company: companyId });
+    if (!stock) {
+      return res.status(404).json({ error: "Stock not found" });
     }
+    res.status(200).json(stock);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
-  res.status(400).json({ error: "stock not found" });
 };
 
-//create a new stock
+// Create a new stock
 const createStock = async (req, res) => {
-  let { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({ error: "No such valid id" });
+  const { companyId } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(companyId)) {
+    return res.status(400).json({ error: "Invalid company ID" });
   }
-  let { name, totalUnits, unitsSold } = req.body;
-  let stock = { name, totalUnits, unitsSold };
-  let company = await Company.findById(id);
-  if (!company) {
-    return res.status(400).json({ error: "No such company" });
+  const { name, totalUnits, unitsSold, pricePerUnit } = req.body;
+  try {
+    const stock = new Stock({
+      name,
+      totalUnits,
+      unitsSold,
+      pricePerUnit,
+      company: companyId,
+    });
+    await stock.save();
+    res.status(201).json(stock);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
-  company.stocks.push(stock);
-  await Company.findByIdAndUpdate(id, company);
-  res.status(200).json(stock);
 };
 
-//update a stock
+// Update a stock
 const updateStock = async (req, res) => {
-  let { id, stockId } = req.params;
-  if (
-    !mongoose.Types.ObjectId.isValid(id) ||
-    !mongoose.Types.ObjectId.isValid(stockId)
-  ) {
-    return res.status(400).json({ error: "No such valid id" });
-  }
-  const { name, totalUnits, unitsSold } = req.body;
+  const { companyId, stockId } = req.params;
 
-  const updateFields = {};
-  if (name) updateFields["stocks.$.name"] = name;
-  if (totalUnits !== undefined)
-    updateFields["stocks.$.totalUnits"] = totalUnits;
-  if (unitsSold !== undefined) updateFields["stocks.$.unitsSold"] = unitsSold;
-
-  const company = await Company.findOneAndUpdate(
-    { _id: id, "stocks._id": stockId },
-    { $set: updateFields },
-    { new: true }
-  );
-  if (!company) {
-    return res.status(400).json({ error: "No such company" });
+  if (!mongoose.Types.ObjectId.isValid(companyId) || !mongoose.Types.ObjectId.isValid(stockId)) {
+    return res.status(400).json({ error: "Invalid IDs" });
   }
-  res.status(200).json(company);
+  const updateData = { ...req.body };
+  delete updateData._id;
+
+  try {
+    const stock = await Stock.findOneAndUpdate(
+      { _id: stockId, company: companyId },
+      updateData,
+      { new: true, runValidators: true } 
+    );
+
+    if (!stock) {
+      return res.status(404).json({ error: "Stock not found" });
+    }
+    res.status(200).json(stock);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
-//delete a stock
+// Delete a stock
 const deleteStock = async (req, res) => {
-  let { id, stockId } = req.params;
-  if (
-    !mongoose.Types.ObjectId.isValid(id) ||
-    !mongoose.Types.ObjectId.isValid(stockId)
-  ) {
-    return res.status(400).json({ error: "No such valid id" });
+  const { companyId, stockId } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(companyId) || !mongoose.Types.ObjectId.isValid(stockId)) {
+    return res.status(400).json({ error: "Invalid IDs" });
   }
-  const company = await Company.findByIdAndUpdate(
-    id,
-    { $pull: { stocks: { _id: stockId } } },
-    { new: true }
-  );
-  res.status(200).json(company);
+  try {
+    const stock = await Stock.findOneAndDelete({ _id: stockId, company: companyId });
+    if (!stock) {
+      return res.status(404).json({ error: "Stock not found" });
+    }
+    res.status(200).json(stock);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 module.exports = {

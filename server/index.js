@@ -1,89 +1,87 @@
-if (process.env.NODE_ENV != "production") {
-    require("dotenv").config();
-}
+// // express config
+// const express = require('express');
+// const app = express();
+
+// // mongoose config
+// const mongoose = require("mongoose");
+
+// // dotenv config
+// require('dotenv').config();
+
+// // middleware to parse json bodies
+// app.use(express.json());
+
+// app.use((req, res, next) => {
+//   console.log(req.path, req.method);
+//   next();
+// });
+
+// //middleware to use error handler
+// const errorHandler = require('./middlewares/expressError.js');
+
+// //using global error handler
+// app.use(errorHandler);
+
+// // routes
+// const companyRoutes = require("./routes/companyRoutes.js")
+// const stockRoutes = require("./routes/stockRoutes.js")
+// const authRoutes = require("./routes/authRoutes.js");
+
+// // base route
+// app.get("/", (req, res) => {
+//   res.json('/ route here');
+// });
+
+// // use routes
+// app.use("/api/auth", authRoutes);
+// app.use("/api/dashboard/companies", companyRoutes);
+// app.use("/api/dashboard/companies/:companyId/stocks", stockRoutes);
+
+// // connection string
+// mongoose.connect(process.env.MONGO_URI).then(() => {
+//   app.listen(process.env.PORT, () => {
+//     console.log(
+//       `Connected to DB and running on port https://localhost:${process.env.PORT}/`
+//     );
+//   });
+// });
 
 const express = require('express');
-const app = express();
 const mongoose = require("mongoose");
+require('dotenv').config();
 
-const session = require("express-session");
-const MongoStore = require("connect-mongo");
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
-
-const User = require("./models/userSchema.js");
-
-// to delete
-const path = require("path");
-const methodOverride = require("method-override");
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "/views"));
-app.use(methodOverride("_method"));
-
-
-const company = require("./routes/company.js")
-const stock = require("./routes/stock.js")
-const userRouter = require("./routes/user.js");
-
-
-const DatabaseURL = process.env.ATLASDB_URL;
-
-main()
-    .then(() => {
-        console.log("connected to DB");
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-    async function main() {
-        await mongoose.connect(DatabaseURL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            serverSelectionTimeoutMS: 30000, // 30 seconds
-            connectTimeoutMS: 30000,         // 30 seconds
-        });
-    }
-
+const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// const store = MongoStore.create({
-//     mongoUrl: DatabaseURL,
-//     crypto: {
-//         secret: process.env.SECRET,
-//     },
-//     touchAfter: 24 * 3600,
-// });
+const errorHandler = require('./middlewares/expressError.js');
 
-// store.on("error" , ()=>{
-//     console.log("Error in MONGO Session Store" , err);
-// });
+// Log all requests
+app.use((req, res, next) => {
+  console.log(req.path, req.method);
+  next();
+});
 
-const sessionOptions = {
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-        httpOnly: true,
-    },
-};
+// Routes
+const companyRoutes = require("./routes/companyRoutes.js");
+const stockRoutes = require("./routes/stockRoutes.js");
+const authRoutes = require("./routes/authRoutes.js");
 
-app.use(session(sessionOptions));
+// Base route
+app.get("/", (req, res) => {
+  res.json('/ route here');
+});
 
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
+// Use routes
+app.use("/api/auth", authRoutes);
+app.use("/api/dashboard/companies", companyRoutes);
+app.use("/api/dashboard/companies/:companyId/stocks", stockRoutes);
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// Error handling middleware
+app.use(errorHandler);
 
-app.use("/api/companies/:id/stocks", stock);
-app.use("/api/companies", company);
-app.use("/", userRouter);
-
-
-app.listen(process.env.PORT, () => {
-    console.log(`server is listening to port ${process.env.PORT}`);
+// Connect to MongoDB and start the server
+mongoose.connect(process.env.MONGO_URI).then(() => {
+  app.listen(process.env.PORT, () => {
+    console.log(`Connected to DB and running on port https://localhost:${process.env.PORT}/`);
+  });
 });
