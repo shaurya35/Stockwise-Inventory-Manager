@@ -15,19 +15,19 @@ Stockwise is a cutting-edge web application designed for efficient inventory man
 
 ## Overview
 
--
--
-
+- Stockwise helps businesses manage their inventory by predicting future demand and ensuring they have the right stock levels. This application provides tools for tracking products, managing companies, and viewing real-time inventory data.
 
 ## Features
 
-- 
-- 
+- Demand Forecasting- Predict future product demand based on historical data.
+- Inventory Tracking- Monitor stock levels, sales, and inventory health.
+- Real Time Wholesaler Chat- Collaborate with wholesalers in real-time to streamline procurement processes.
 
 ## Dependencies
 
-- 
-- 
+- Express
+- Git
+- Github
 
 ## Setup
 
@@ -54,7 +54,7 @@ Access the app in your web browser at `http://localhost:5173/`.
 
 ## Contributors
 
-- Sharya ([LinkedIn](https://www.linkedin.com/in/shaurya--jha/))
-- Name ([LinkedIn](https://www.linkedin.com/in/shaurya--jha/))
-- Name ([LinkedIn](https://www.linkedin.com/in/shaurya--jha/))
+- Shaurya ([LinkedIn](https://www.linkedin.com/in/shaurya--jha/))
+- Om Shankar Deshmukh ([LinkedIn](https://www.linkedin.com/in/om-shankar-deshmukh-7431b9245/))
+- Satyam Kumar ([LinkedIn](https://www.linkedin.com/in/satyamkumar1018/))
 
