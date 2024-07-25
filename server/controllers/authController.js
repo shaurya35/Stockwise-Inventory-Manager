@@ -1,3 +1,5 @@
+// UNUSABLE CODE
+
 const User = require("../models/userSchema.js");
 
 //render signup page
