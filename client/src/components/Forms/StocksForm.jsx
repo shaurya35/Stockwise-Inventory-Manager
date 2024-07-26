@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import "../styles/components/CompanyForm.css";
-import { useCompaniesContext } from './../hooks/useCompaniesContext';
+import "../../styles/components/Forms/AddForm.css";
+import { useCompaniesContext } from '../../hooks/useCompaniesContext';
 
 const StockForm = ({ onClose }) => {
   const { companyId } = useParams();

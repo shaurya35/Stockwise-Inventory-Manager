@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import logo from "../assets/logo.svg";
-import ContactForm from "../components/Contactform";
+import ContactForm from "../components/Forms/Contactform";
 
 export default function Navigationbar() {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);

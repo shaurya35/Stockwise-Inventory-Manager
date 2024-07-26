@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navigationbar';
 import Homepage from './pages/Homepage';
-import Signup from './components/Signup';
-import Login from './components/Login';
+import Signup from './components/Auth/Signup';
+import Login from './components/Auth/Login';
 import CompanyDashboard from './pages/CompanyDashboard';
 import StocksDashboard from './pages/StocksDashboard';
 

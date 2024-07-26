@@ -1,6 +1,6 @@
 // ContactForm.jsx
 import React from 'react';
-import '../styles/components/Contactform.css';
+import '../../styles/components/Contactform.css';
 
 const ContactForm = ({ isOpen, onClose }) => {
     if (!isOpen) return null;

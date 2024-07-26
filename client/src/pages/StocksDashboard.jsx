@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../styles/static/CompanyDashboard.css";
-import StockForm from "../components/StocksForm";
-import { useCompaniesContext } from "./../hooks/useCompaniesContext";
+import StockForm from "../components/Forms/StocksForm";
+import { useCompaniesContext } from './../hooks/useCompaniesContext';
 
 export default function StocksDashboard() {
   const { companies, dispatch } = useCompaniesContext();
@@ -32,6 +32,17 @@ export default function StocksDashboard() {
   useEffect(() => {
     fetchStocks();
   }, [companyId, dispatch]);
+
+  useEffect(() => {
+    if (showForm) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+    return () => {
+      document.body.classList.remove("no-scroll");
+    };
+  }, [showForm]);
 
   const handleFormClose = () => {
     setShowForm(false);

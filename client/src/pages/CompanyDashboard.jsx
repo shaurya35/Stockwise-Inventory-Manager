@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/static/CompanyDashboard.css";
-import CompanyForm from "../components/CompanyForm";
+import CompanyForm from "../components/Forms/CompanyForm";
 import { useCompaniesContext } from './../hooks/useCompaniesContext';
 
 export default function CompanyDashboard() {

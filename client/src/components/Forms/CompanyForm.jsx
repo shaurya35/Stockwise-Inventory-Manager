@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "../styles/components/CompanyForm.css";
-import { useCompaniesContext } from './../hooks/useCompaniesContext';
+import "../../styles/components/Forms/AddForm.css";
+import { useCompaniesContext } from '../../hooks/useCompaniesContext';
 
 const CompanyForm = ({ onClose }) => {
   const { dispatch} = useCompaniesContext();
