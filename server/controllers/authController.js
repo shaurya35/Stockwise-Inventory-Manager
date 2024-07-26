@@ -8,8 +8,8 @@ if (!process.env.JWT_SECRET) {
 }
 
 const login = async (req, res) => {
-    const { email, password } = req.body;
-    
+    const { email, password } = req.body ;
+            
     try {
         const user = await User.findOne({ email });
         if (!user) {
