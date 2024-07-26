@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "../styles/static/CompanyDashboard.css";
+import "../styles/static/Dashboard.css";
 import StockForm from "../components/Forms/StocksForm";
-import { useCompaniesContext } from './../hooks/useCompaniesContext';
+import { useCompaniesContext } from "./../hooks/useCompaniesContext";
 
 export default function StocksDashboard() {
   const { companies, dispatch } = useCompaniesContext();
@@ -85,7 +85,7 @@ export default function StocksDashboard() {
                     <div className="block_name_name">{stock.name}</div>
                     <div className="block_name_tag">#{index + 1}</div>
                   </div>
-                  <div className="company_dashboard_block_address outfit">
+                  <div className="company_dashboard_block_address outfit ">
                     <span className="stock_span">Total Units: </span>
                     {stock.totalUnits}
                   </div>

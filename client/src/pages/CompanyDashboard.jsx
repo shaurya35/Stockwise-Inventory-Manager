@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/static/CompanyDashboard.css";
+import "../styles/static/Dashboard.css";
 import CompanyForm from "../components/Forms/CompanyForm";
-import { useCompaniesContext } from './../hooks/useCompaniesContext';
+import { useCompaniesContext } from "./../hooks/useCompaniesContext";
 
 export default function CompanyDashboard() {
   const { companies, dispatch } = useCompaniesContext();
@@ -19,7 +19,7 @@ export default function CompanyDashboard() {
       }
 
       if (response.ok) {
-        dispatch({ type: 'SET_COMPANIES', payload: json });
+        dispatch({ type: "SET_COMPANIES", payload: json });
       }
     };
 
@@ -57,8 +57,8 @@ export default function CompanyDashboard() {
           <div className="company_dashboard_blocks">
             {companies &&
               companies.map((company, index) => (
-                <div 
-                  className="company_dashboard_block" 
+                <div
+                  className="company_dashboard_block"
                   key={company._id || index}
                   onClick={() => handleCompanyClick(company._id)}
                 >
@@ -70,7 +70,7 @@ export default function CompanyDashboard() {
                     {company.address}
                   </div>
                   <div className="company_dashboard_block_contactEmail outfit">
-                    <span className="contact_span"> mail: </span> 
+                    <span className="contact_span"> mail: </span>
                     {company.contactEmail}
                   </div>
                   <div className="company_dashboard_block_contactNumber outfit">

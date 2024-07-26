@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import "../../styles/components/Forms/AddForm.css";
-import { useCompaniesContext } from '../../hooks/useCompaniesContext';
+import { useCompaniesContext } from "../../hooks/useCompaniesContext";
 
 const StockForm = ({ onClose }) => {
   const { companyId } = useParams();
-  const { dispatch} = useCompaniesContext();
+  const { dispatch } = useCompaniesContext();
   const [name, setName] = useState("");
   const [totalUnits, setTotalUnits] = useState("");
   const [unitsSold, setUnitsSold] = useState("");
@@ -16,13 +16,16 @@ const StockForm = ({ onClose }) => {
   const handleAddStock = async (e) => {
     e.preventDefault();
     const stock = { name, totalUnits, unitsSold, pricePerUnit };
-    const response = await fetch(`/api/dashboard/companies/${companyId}/stocks`, {
-      method: 'POST',
-      body: JSON.stringify(stock),
-      headers: {
-        'Content-Type': 'application/json'
+    const response = await fetch(
+      `/api/dashboard/companies/${companyId}/stocks`,
+      {
+        method: "POST",
+        body: JSON.stringify(stock),
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
-    });
+    );
     const json = await response.json();
 
     if (!response.ok) {
@@ -35,7 +38,7 @@ const StockForm = ({ onClose }) => {
       setUnitsSold("");
       setPricePerUnit("");
       setError(null);
-      dispatch({ type: 'CREATE_STOCK', payload: json });
+      dispatch({ type: "CREATE_STOCK", payload: json });
     }
     onClose();
   };

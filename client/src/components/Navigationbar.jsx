@@ -16,14 +16,18 @@ export default function Navigationbar() {
   };
 
   const handleReload = () => {
-    window.location.href = '/';
-  }
+    window.location.href = "/";
+  };
   return (
     <>
       {/* header */}
       <header className="app_header">
         <div className="header sora">
-          <div className="header_left"onClick={handleReload} style={{ cursor: "pointer" }}>
+          <div
+            className="header_left"
+            onClick={handleReload}
+            style={{ cursor: "pointer" }}
+          >
             <img src={logo} className="left_logo" alt="Logo" />
             Stockwise
           </div>

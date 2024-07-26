@@ -1,40 +1,45 @@
 import React, { useState } from "react";
 import "../../styles/components/Forms/AddForm.css";
-import { useCompaniesContext } from '../../hooks/useCompaniesContext';
+import { useCompaniesContext } from "../../hooks/useCompaniesContext";
 
 const CompanyForm = ({ onClose }) => {
-  const { dispatch} = useCompaniesContext();
+  const { dispatch } = useCompaniesContext();
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
-  
+
   const [error, setError] = useState(null);
 
   const handleAddCompany = async (e) => {
     e.preventDefault();
-    const company = { name, address, contactEmail: email,contactNumber: contact}; 
-    const response = await fetch('/api/dashboard/companies', {
-      method: 'POST',
+    const company = {
+      name,
+      address,
+      contactEmail: email,
+      contactNumber: contact,
+    };
+    const response = await fetch("/api/dashboard/companies", {
+      method: "POST",
       body: JSON.stringify(company),
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     });
     const json = await response.json();
 
-    if(!response.ok){
+    if (!response.ok) {
       setError(json.error);
     }
 
-    if(response.ok){
-      setName('')
-      setAddress('')
-      setEmail('')
-      setContact('')
+    if (response.ok) {
+      setName("");
+      setAddress("");
+      setEmail("");
+      setContact("");
       setError(null);
       // console.log("new workout added");
-      dispatch({type: 'CREATE_COMPANIES', payload: json})
+      dispatch({ type: "CREATE_COMPANIES", payload: json });
     }
     onClose();
   };
