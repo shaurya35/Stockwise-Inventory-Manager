@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/static/CompanyDashboard.css";
 import CompanyForm from "../components/CompanyForm";
 import { useCompaniesContext } from './../hooks/useCompaniesContext';
@@ -6,6 +7,7 @@ import { useCompaniesContext } from './../hooks/useCompaniesContext';
 export default function CompanyDashboard() {
   const { companies, dispatch } = useCompaniesContext();
   const [showForm, setShowForm] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -35,6 +37,10 @@ export default function CompanyDashboard() {
     };
   }, [showForm]);
 
+  const handleCompanyClick = (companyId) => {
+    navigate(`/dashboard/companies/${companyId}/stocks`);
+  };
+
   return (
     <>
       <main className="app_company_dashboard">
@@ -51,7 +57,11 @@ export default function CompanyDashboard() {
           <div className="company_dashboard_blocks">
             {companies &&
               companies.map((company, index) => (
-                <div className="company_dashboard_block" key={company._id || index}>
+                <div 
+                  className="company_dashboard_block" 
+                  key={company._id || index}
+                  onClick={() => handleCompanyClick(company._id)}
+                >
                   <div className="company_dashboard_block_name sora">
                     <div className="block_name_name"> {company.name}</div>
                     <div className="block_name_tag">#{index + 1}</div>

@@ -7,20 +7,18 @@
 }
 
 .dashboard {
-  background-color: red;
+  /* background-color: red; */
   /* margin-top: 13vh; */
   padding-top: 2rem;
   color: var(--headline);
   width: 65rem;
   height: calc(100vh - 9rem);
-  /* display: flex;
-    justify-content: center;
-    align-items: center; */
 }
 
 .dashboard h2 {
   margin-top: 0;
   margin-bottom: 1rem;
+  font-size: 2rem;
 }
 
 .dashboard input {
