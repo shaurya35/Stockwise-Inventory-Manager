@@ -1,5 +1,4 @@
-import "../styles/components/Dashboard.css";
-import Dropdown from "../components/Dropdown";
+import "../styles/static/Dashboard.css";
 
 export default function Dashboard() {
   return (
@@ -9,7 +8,6 @@ export default function Dashboard() {
         <div className="dashboard">
           <div className="dashboard_nav">
             <h2 className="sora">Dashboard</h2>
-            <Dropdown />
           </div>
 
           <form>

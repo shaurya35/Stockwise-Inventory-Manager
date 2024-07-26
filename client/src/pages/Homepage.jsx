@@ -49,24 +49,24 @@ export default function Homepage() {
                     </div>
                     <div className="section_blocks">
                         <div className="blocks_block">
-                            <div className="block_heading">Real-Time Inventory Tracking</div>
-                            <div className="block_content">
+                            <div className="block_heading sora">Real-Time Inventory Tracking</div>
+                            <div className="block_content outfit">
                                 Stay updated with the latest inventory levels in real-time. Our
                                 system provides accurate and instant tracking of your stock,
                                 ensuring you never run out of essential items.
                             </div>
                         </div>
                         <div className="blocks_block">
-                            <div className="block_heading">Automated Order Management</div>
-                            <div className="block_content">
+                            <div className="block_heading sora">Automated Order Management</div>
+                            <div className="block_content outfit">
                                 Simplify your order processing with our automated workflows.
                                 From purchase orders to sales orders, our application handles
                                 everything seamlessly, reducing manual effort and errors.
                             </div>
                         </div>
                         <div className="blocks_block">
-                            <div className="block_heading">Advanced Reporting and Analytics</div>
-                            <div className="block_content">
+                            <div className="block_heading sora">Advanced Reporting and Analytics</div>
+                            <div className="block_content outfit">
                                 Gain valuable insights into your business operations with our
                                 advanced reporting tools. Analyze sales trends, monitor stock
                                 levels, and make data-driven decisions to optimize your
@@ -74,8 +74,8 @@ export default function Homepage() {
                             </div>
                         </div>
                         <div className="blocks_block">
-                            <div className="block_heading">Predictive Analysis</div>
-                            <div className="block_content">
+                            <div className="block_heading sora">Predictive Analysis</div>
+                            <div className="block_content outfit">
                                 Our inventory management application provides you with a wealth
                                 of analytics data, enabling you to forecast demand, optimize
                                 stock levels, and anticipate market trends.{" "}

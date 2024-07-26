@@ -1,0 +1,94 @@
+.app_company_dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: calc(100vh - 7rem); */
+  background-color: var(--background-color);
+  padding-top: 5rem;
+}
+
+.company_dashboard {
+  width: 65rem;
+  /* height: 82vh; */
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.company_dashboard_heading {
+  font-size: 2rem;
+  line-height: 3.5rem;
+  font-weight: 700;
+  color: var(--headline);
+  /* background-color: blue; */
+}
+
+.company_dashboard_blocks {
+  /* background-color: aquamarine; */
+}
+
+.company_dashboard_block {
+  background-color: var(--headline);
+  width: 30rem;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  border-radius: 3px;
+  width: 32.5rem;
+  cursor: pointer;
+  /* background-color: red; */
+}
+
+.company_dashboard_block_name {
+  /* background-color: gold; */
+  font-size: 2rem;
+  line-height: 1.875rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  /* background-color: red; */
+  margin-bottom: 1rem;
+}
+
+.block_name_tag{
+  color: var(--card-highlights);
+  font-size: 1.125rem;
+  font-weight: 500;
+  /* background-color: gainsboro; */
+}
+
+.company_dashboard_block_address {
+  color: var(--paragraph);
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  /* background-color: bisque; */
+  margin-bottom: 0.6rem;
+  /* text-decoration: underline; */
+}
+
+.contact_span{
+  color: var(--background-color);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.company_dashboard_block_contactEmail {
+  color: var(--paragraph);
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  /* background-color: peru; */
+  margin-top: 0.5rem;
+}
+
+.company_dashboard_block_contactNumber {
+  color: var(--paragraph);
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  /* background-color: goldenrod; */
+}

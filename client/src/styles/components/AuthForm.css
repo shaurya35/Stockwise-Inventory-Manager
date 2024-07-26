@@ -7,7 +7,7 @@
 }
 
 .auth-form {
-    background-color: #0f0e17;
+    background-color: var(--background-color);
     margin-top: 13vh;
     padding: 2rem;
     border-radius: 0.5rem;

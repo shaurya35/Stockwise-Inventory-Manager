@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Homepage from './pages/Homepage';
 import Navbar from './components/Navigationbar';
+import Homepage from './pages/Homepage';
 import Signup from './components/Signup';
 import Login from './components/Login';
-import Dashboard from './pages/Dashboard'
+import Dashboard from './pages/CompanyDashboard'
+import CompanyDashboard from './pages/Dashboard'
 
 function App() {
     return (
@@ -16,7 +17,8 @@ function App() {
                         <Route path="/" element={<Homepage />} />
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/login" element={<Login />} />
-                        <Route path="/dashboard" element={<Dashboard/>}/>
+                        <Route path="/dashboard/companies" element={<Dashboard/>}/>
+                        <Route path="/dashboard/companies/:companyId/stocks" element={<CompanyDashboard/>}/>
                     </Routes>
                 </div>
             </BrowserRouter>
