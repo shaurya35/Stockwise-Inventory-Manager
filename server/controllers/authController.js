@@ -1,83 +1,50 @@
-// UNUSABLE CODE
 
-const User = require("../models/userSchema.js");
-
-//render signup page
-const renderSignupForm = async (req, res) => {
-    try {
-        let users = await User.find();
-        res.status(200).json(users);
-    } catch (error) {
-        console.error('Error fetching users:', error);
-        res.status(500).json({ error: 'An error occurred while fetching users' });
-    }
-};
+const User = require("../models/userModel.js");
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 
-//signup
-const signup = async (req, res, next) => {
-    try {
-        const { username, email, password } = req.body;
-        const newUser = new User({ email, username });
-        const registeredUser = await User.register(newUser, password);
-        console.log(registeredUser);
-
-        req.login(registeredUser, (err) => {
-            if (err) {
-                return next(err); 
-            }
-            res.redirect("/api/companies");
-        });
-    } catch (e) {
-        console.error('Error during signup:', e);
-        res.status(500).redirect("/signup");
-    }
-};
-
-
-//render login page
-const renderLoginForm = async (req, res) => {
-    try {
-        let users = await User.find();
-        res.status(200).json(users);
-    } catch (error) {
-        console.error('Error fetching users:', error);
-        res.status(500).json({ error: 'An error occurred while fetching users' });
-    }
-};
-
-
-//login
 const login = async (req, res) => {
-    try {
-        let redirectUrl = res.locals.redirectUrl || "/api/companies";
-        
-        // Respond with a success status and the redirect URL
-        res.status(200).json({ redirectUrl });
-    } catch (error) {
-        // Handle any errors that might occur
-        console.error(error);
-        
-        // Respond with an error status and message
-        res.status(500).json({ error: 'An error occurred during login' });
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ error: 'Invalid email or password' });
     }
-};
+  
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ error: 'Invalid email or password' });
+    }
+  
+    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.json({ token });
+  };
 
-//logout
-const logout = (req, res, next) => {
-    req.logout((err) => {
-        if (err) {
-            return next(err);
+  const signup = async (req, res) => {
+    const { username, email, password } = req.body;
+    try {
+      const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+      if (existingUser) {
+        if (existingUser.username === username) {
+          return res.status(400).json({ error: 'Username already in use' });
         }
-        res.status(200).json("/api/companies");
-    });
-};
+        if (existingUser.email === email) {
+          return res.status(400).json({ error: 'Email already in use' });
+        }
+      }
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const user = new User({ username, email, password: hashedPassword });
+      await user.save();
+      const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+  
+      res.status(201).json({ token });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
 
 
-module.exports ={
+module.exports = {
     signup,
     login,
-    renderSignupForm,
-    renderLoginForm,
-    logout,
 };
