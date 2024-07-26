@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import "../styles/static/CompanyDashboard.css";
+import CompanyForm from "../components/CompanyForm";
+import { useCompaniesContext } from './../hooks/useCompaniesContext';
 
 export default function CompanyDashboard() {
-  const [companies, setCompanies] = useState(null);
+  const { companies, dispatch } = useCompaniesContext();
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -12,34 +15,52 @@ export default function CompanyDashboard() {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      const contentType = response.headers.get("content-type");
-      if (!contentType || !contentType.includes("application/json")) {
-        throw new Error("Oops, we did not get JSON!");
+
+      if (response.ok) {
+        dispatch({ type: 'SET_COMPANIES', payload: json });
       }
-      setCompanies(json);
     };
 
     fetchCompanies();
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (showForm) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+    return () => {
+      document.body.classList.remove("no-scroll");
+    };
+  }, [showForm]);
 
   return (
     <>
       <main className="app_company_dashboard">
+        <div className="company_dashboard_heading sora">
+          All your companies are <br /> listed here <br />
+          <button
+            className="company_dashboard_button sora"
+            onClick={() => setShowForm(true)}
+          >
+            Add Company
+          </button>
+        </div>
         <div className="company_dashboard">
-          <div className="company_dashboard_heading sora">All your companies are <br /> listed here</div>
           <div className="company_dashboard_blocks">
             {companies &&
               companies.map((company, index) => (
-                <div className="company_dashboard_block" key={company._id}>
+                <div className="company_dashboard_block" key={company._id || index}>
                   <div className="company_dashboard_block_name sora">
                     <div className="block_name_name"> {company.name}</div>
                     <div className="block_name_tag">#{index + 1}</div>
                   </div>
                   <div className="company_dashboard_block_address outfit">
-                    {company.address} 
+                    {company.address}
                   </div>
                   <div className="company_dashboard_block_contactEmail outfit">
-                    <span className="contact_span"> mail: </span>{" "}
+                    <span className="contact_span"> mail: </span> 
                     {company.contactEmail}
                   </div>
                   <div className="company_dashboard_block_contactNumber outfit">
@@ -51,6 +72,7 @@ export default function CompanyDashboard() {
           </div>
         </div>
       </main>
+      {showForm && <CompanyForm onClose={() => setShowForm(false)} />}
     </>
   );
 }

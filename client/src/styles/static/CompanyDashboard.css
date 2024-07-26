@@ -1,37 +1,69 @@
 .app_company_dashboard {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  flex-wrap: wrap;
   /* height: calc(100vh - 7rem); */
   background-color: var(--background-color);
   padding-top: 5rem;
 }
 
 .company_dashboard {
-  width: 65rem;
+  width: 32.5rem;
   /* height: 82vh; */
   overflow-x: hidden;
   overflow-y: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: start;
+  /* background-color: red; */
 }
 
 .company_dashboard_heading {
+  width: 32.5rem;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 7rem;
+  /* float: left; */
   font-size: 2rem;
   line-height: 3.5rem;
   font-weight: 700;
   color: var(--headline);
+  background-color: var(--background-color);
+  /* background-color: blue; */
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  flex-wrap: wrap;
   /* background-color: blue; */
 }
 
+.company_dashboard_button {
+  color: var(--button-text);
+  background-color: var(--button);
+  border: 0.15rem solid var(--background-color);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  padding: 1.2rem 1.3rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.main_left_button {
+  margin-top: 1rem;
+}
+
 .company_dashboard_blocks {
-  /* background-color: aquamarine; */
+  z-index: inherit;
 }
 
 .company_dashboard_block {
   background-color: var(--headline);
-  width: 30rem;
+  /* width: 30rem; */
   padding: 2.5rem;
   margin-bottom: 2rem;
   border-radius: 3px;
@@ -53,7 +85,7 @@
   margin-bottom: 1rem;
 }
 
-.block_name_tag{
+.block_name_tag {
   color: var(--card-highlights);
   font-size: 1.125rem;
   font-weight: 500;
@@ -70,7 +102,7 @@
   /* text-decoration: underline; */
 }
 
-.contact_span{
+.contact_span {
   color: var(--background-color);
   font-size: 1.125rem;
   font-weight: 700;
@@ -91,4 +123,62 @@
   font-weight: 400;
   line-height: 1.7;
   /* background-color: goldenrod; */
+}
+
+/* media query */
+
+@media (max-width: 1056px) {
+  .company_dashboard_heading {
+    width: 32.5rem;
+    position: static;
+    position: -webkit-sticky;
+    top: 0;
+    /* z-index: 1; */
+  }
+  .company_dashboard_button {
+    margin-bottom: 1rem;
+  }
+
+  .app_company_dashboard {
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .company_dashboard_heading {
+    font-size: 1.8rem;
+    text-align: start;
+    justify-content: start;
+    align-items: start;
+    margin-left: 1rem;
+  }
+
+  .company_dashboard_block {
+    width: 100%;
+    padding: 2.5rem;
+    width: 90vw;
+    margin-bottom: 1rem;
+  }
+
+  .company_dashboard_button {
+    padding: 1rem 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    /* margin-left: 0.5rem; */
+  }
+}
+
+@media (max-width: 400px) {
+  .company_dashboard_heading {
+    font-size: 1.8rem;
+    text-align: start;
+  }
+
+  .company_dashboard_block {
+    width: 100%;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    width: 90vw;
+  }
 }
