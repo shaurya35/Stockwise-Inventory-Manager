@@ -54,7 +54,7 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
-const errorHandler = require('./middlewares/expressError.js');
+const errorHandler = require('./middlewares/ExpressError.js');
 
 // Log all requests
 app.use((req, res, next) => {
@@ -83,6 +83,6 @@ app.use(errorHandler);
 // Connect to MongoDB and start the server
 mongoose.connect(process.env.MONGO_URI).then(() => {
   app.listen(process.env.PORT, () => {
-    console.log(`Connected to DB and running on port https://localhost:${process.env.PORT}/`);
+    console.log(`Connected to DB and running on port http://localhost:${process.env.PORT}/`);
   });
 });
