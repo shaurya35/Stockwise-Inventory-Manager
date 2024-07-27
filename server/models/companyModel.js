@@ -18,7 +18,7 @@ const companySchema = new mongoose.Schema({
   address: { type: String, required: true },
   contactEmail: { type: String, required: true },
   contactNumber: { type: String, required: true },
-  owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true},
 });
 
 const Company = mongoose.model('Company', companySchema);
