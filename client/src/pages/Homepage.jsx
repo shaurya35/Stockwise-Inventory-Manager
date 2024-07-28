@@ -9,7 +9,7 @@ export default function Homepage() {
   const navigate = useNavigate();
 
   const handleGetStartedClick = () => {
-    navigate("/signup");
+    navigate("/auth/signup");
   };
 
   return (

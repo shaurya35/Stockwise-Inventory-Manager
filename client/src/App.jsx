@@ -14,24 +14,44 @@ function App() {
         <Navbar />
         <div className="pages">
           <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
+
+            <Route 
+              path="/" 
+              element={<Homepage />} 
+            />
+
+            <Route 
+            path="/auth/signup" 
+            element={<Signup />} 
+            />
+
+            <Route 
+            path="/auth/login" 
+            element={<Login />}
+            />
+
             <Route
               path="/dashboard"
               element={<Navigate to="/dashboard/companies" replace />}
             />
-            <Route path="/dashboard/companies" element={<CompanyDashboard />} />
+
+            <Route 
+              path="/dashboard/companies" 
+              element={<CompanyDashboard />}
+            />
+
             <Route
               path="/dashboard/companies/:companyId/"
               element={
                 <Navigate to="/dashboard/companies/:companyId/stocks" replace />
               }
             />
+
             <Route
               path="/dashboard/companies/:companyId/stocks"
               element={<StocksDashboard />}
             />
+            
           </Routes>
         </div>
       </BrowserRouter>

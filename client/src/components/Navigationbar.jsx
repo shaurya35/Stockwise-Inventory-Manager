@@ -1,10 +1,19 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
+import { useLocation, Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import ContactForm from "../components/Forms/Contactform";
+import { useLogout } from '../hooks/useLogout';
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function Navigationbar() {
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+  const location = useLocation();
+
+  const handleClick = () => {
+    logout();
+  };
 
   const openContactForm = (e) => {
     e.preventDefault();
@@ -18,9 +27,12 @@ export default function Navigationbar() {
   const handleReload = () => {
     window.location.href = "/";
   };
+
+  const isAuthRoute = location.pathname.startsWith('/auth');
+  const isHomeRoute = location.pathname === '/';
+
   return (
     <>
-      {/* header */}
       <header className="app_header">
         <div className="header sora">
           <div
@@ -33,16 +45,19 @@ export default function Navigationbar() {
           </div>
           <div className="header_right">
             <ul className="right_list">
-              <a href="#x1">Features</a>
-              <a href="#" onClick={openContactForm}>
-                Contact Us
-              </a>
+              {isHomeRoute && <a href="#x1">Features</a>}
+              <a href="#" onClick={openContactForm}>Contact Us</a>
+              {user && (
+                <div>
+                  {user.username}
+                  <button onClick={handleClick}>Logout</button>
+                </div>
+              )}
             </ul>
           </div>
         </div>
       </header>
 
-      {/* Contact Form */}
       <ContactForm isOpen={isContactFormOpen} onClose={closeContactForm} />
     </>
   );
