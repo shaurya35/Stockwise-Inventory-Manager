@@ -8,6 +8,7 @@ import CompanyDashboard from "./pages/CompanyDashboard";
 import StocksDashboard from "./pages/StocksDashboard";
 import DataDashboard from "./pages/DataDashboard";
 import PredictionDashboard from "./pages/PredictionDashboard";
+import ChatDashboard from "./pages/ChatDashboard";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 function App() {
@@ -53,11 +54,16 @@ function App() {
             />
             <Route
               path="/dashboard/companies/:companyId/data"
-              element={<DataDashboard />}
+              element={ <DataDashboard /> }
             />
             <Route
               path="/dashboard/companies/:companyId/prediction"
-              element={<PredictionDashboard />}
+              element={ <PredictionDashboard /> }
+            />
+
+            <Route
+              path="/dashboard/companies/:companyId/chat"
+              element={<ChatDashboard />}
             />
             <Route
               path="/company/:companyId"

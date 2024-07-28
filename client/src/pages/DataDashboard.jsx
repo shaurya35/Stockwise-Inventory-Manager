@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/static/DataDashboard.css";
+import ButtonBar from "../components/ButtonBar";
 import { useAuthContext } from "./../hooks/useAuthContext";
 
 export default function DataDashboard() {
@@ -52,7 +53,8 @@ export default function DataDashboard() {
     <>
       <div className="global"></div>
       <main className="app_data_dashboard">
-        <div className="data_dashboard_heading sora">Data Dashboard</div>
+        <ButtonBar companyId={companyId} />
+        <div className="data_dashboard_heading sora">Analytics Dashboard</div>
         <div className="data_dashboard">
           <div className="data_dashboard_blocks">
             {data && (
@@ -88,7 +90,7 @@ export default function DataDashboard() {
                     Total Net Revenue:
                   </div>
                   <div className="data_dashboard_block_address outfit">
-                  ₹  {data.totalNetRevenue}
+                    ₹ {data.totalNetRevenue}
                   </div>
                 </div>
                 <div className="data_dashboard_block">
