@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import ContactForm from "../components/Forms/Contactform";
-import { useLogout } from '../hooks/useLogout';
+import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function Navigationbar() {
@@ -28,8 +28,8 @@ export default function Navigationbar() {
     window.location.href = "/";
   };
 
-  const isAuthRoute = location.pathname.startsWith('/auth');
-  const isHomeRoute = location.pathname === '/';
+  const isAuthRoute = location.pathname.startsWith("/auth");
+  const isHomeRoute = location.pathname === "/";
 
   return (
     <>
@@ -46,12 +46,13 @@ export default function Navigationbar() {
           <div className="header_right">
             <ul className="right_list">
               {isHomeRoute && <a href="#x1">Features</a>}
-              <a href="#" onClick={openContactForm}>Contact Us</a>
+              <a href="#" onClick={openContactForm}>
+                Contact Us
+              </a>
               {user && (
-                <div>
-                  {user.username}
-                  <button onClick={handleClick}>Logout</button>
-                </div>
+                <button className="navbar_button sora" onClick={handleClick}>
+                  Logout
+                </button>
               )}
             </ul>
           </div>

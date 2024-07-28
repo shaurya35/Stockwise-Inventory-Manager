@@ -39,11 +39,15 @@
   line-height: 1.2;
   font-weight: 500;
   color: var(--headline);
+  /* background-color: red; */
 }
 
 .right_list {
   display: flex;
   gap: 1.4rem;
+  /* background-color: saddlebrown; */
+  justify-content: center;
+  align-items: center;
 }
 
 .right_list a {
@@ -53,6 +57,20 @@
 
 .right_list a:hover {
   color: #a7a9be;
+}
+
+.navbar_button{
+  font-size: 1.1rem;
+  line-height: 1.2;
+  font-weight: 500;
+  background-color: var(--button);
+  color: var(--button-text);
+  padding: 0.6rem 0.7rem;
+  border: 0.15rem solid var(--background-color);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
 }
 
 /*media query*/
@@ -86,6 +104,12 @@
   .right_list {
     display: flex;
     gap: 1rem;
+  }
+}
+
+@media (max-width: 430px){
+  .navbar_button{
+    padding: 0.45rem 0.7rem;
   }
 }
 
