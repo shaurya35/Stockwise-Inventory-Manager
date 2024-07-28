@@ -2,15 +2,13 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../styles/static/Dashboard.css";
 import StockForm from "../components/Forms/StocksForm";
-import { useCompaniesContext } from "./../hooks/useCompaniesContext";
+import { useCompaniesContext } from './../hooks/useCompaniesContext';
 
 export default function StocksDashboard() {
-  const { companies, dispatch } = useCompaniesContext();
   const { companyId } = useParams();
-  const [stocks, setStocks] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [stocks, setStocks] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const { dispatch } = useCompaniesContext();
 
   const fetchStocks = async () => {
     try {
@@ -23,9 +21,7 @@ export default function StocksDashboard() {
       const json = await response.json();
       setStocks(json);
     } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
+      console.error("Failed to fetch stocks:", error);
     }
   };
 
@@ -49,20 +45,9 @@ export default function StocksDashboard() {
     fetchStocks();
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!stocks || stocks.length === 0) {
-    return <div>No stocks available.</div>;
-  }
-
   return (
     <>
+      <div className="global"></div>
       <main className="app_company_dashboard">
         <div className="company_dashboard_heading sora">
           All your stocks are listed <br /> here
@@ -75,30 +60,29 @@ export default function StocksDashboard() {
         </div>
         <div className="company_dashboard">
           <div className="company_dashboard_blocks">
-            {stocks &&
-              stocks.map((stock, index) => (
-                <div
-                  className="company_dashboard_block"
-                  key={stock._id || index}
-                >
-                  <div className="company_dashboard_block_name sora">
-                    <div className="block_name_name">{stock.name}</div>
-                    <div className="block_name_tag">#{index + 1}</div>
-                  </div>
-                  <div className="company_dashboard_block_address outfit ">
-                    <span className="stock_span">Total Units: </span>
-                    {stock.totalUnits}
-                  </div>
-                  <div className="company_dashboard_block_contactEmail outfit">
-                    <span className="stock_span">Units Sold: </span>
-                    {stock.unitsSold}
-                  </div>
-                  <div className="company_dashboard_block_contactNumber outfit">
-                    <span className="stock_span">Price Per Unit: </span>
-                    {stock.pricePerUnit}
-                  </div>
+            {stocks.map((stock, index) => (
+              <div
+                className="company_dashboard_block"
+                key={stock._id || index}
+              >
+                <div className="company_dashboard_block_name sora">
+                  <div className="block_name_name">{stock.name}</div>
+                  <div className="block_name_tag">#{index + 1}</div>
                 </div>
-              ))}
+                <div className="company_dashboard_block_address outfit">
+                  <span className="stock_span">Total Units: </span>
+                  {stock.totalUnits}
+                </div>
+                <div className="company_dashboard_block_contactEmail outfit">
+                  <span className="stock_span">Units Sold: </span>
+                  {stock.unitsSold}
+                </div>
+                <div className="company_dashboard_block_contactNumber outfit">
+                  <span className="stock_span">Price Per Unit: </span>
+                  {stock.pricePerUnit}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </main>
