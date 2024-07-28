@@ -9,7 +9,9 @@ Stockwise is a cutting-edge web application designed for efficient inventory man
 - [Overview](#Overview)
 - [Features](#features)
 - [Dependencies](#dependencies)
-- [Setup](#setup)
+- [Git Setup](#Git-Setup)
+- [Client Setup](#Client-Setup)
+- [Server Setup](#Server-Setup)
 - [Usage](#usage)
 - [Contributors](#contributors)
 - [Acknowledgments](#acknowledgments)
@@ -31,7 +33,7 @@ Stockwise is a cutting-edge web application designed for efficient inventory man
 - Git
 - Github
 
-## Setup
+## Git-Setup
 
 Clone the repository:
 
@@ -39,7 +41,7 @@ Clone the repository:
 git clone https://github.com/shaurya35/Stockwise-Inventory-Manager
 cd Stockwise-Inventory-Manager
 ```
-## Setup Client
+## Client Setup
 
 1. Move to client folder:
 
@@ -56,7 +58,7 @@ npm install
 ```bash
 npm run dev
 ```
-## Setup Server
+## Server Setup
 
 1.Move to server folder:
 
