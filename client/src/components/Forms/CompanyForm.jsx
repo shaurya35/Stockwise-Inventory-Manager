@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "../../styles/components/Forms/AddForm.css";
 import { useCompaniesContext } from "../../hooks/useCompaniesContext";
+import { useAuthContext } from './../../hooks/useAuthContext';
 
 const CompanyForm = ({ onClose }) => {
   const { dispatch } = useCompaniesContext();
+  const { user } = useAuthContext();
+  
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
@@ -13,6 +16,11 @@ const CompanyForm = ({ onClose }) => {
 
   const handleAddCompany = async (e) => {
     e.preventDefault();
+
+    if(!user){
+      setError("you must be logged in")
+      return
+    }
     const company = {
       name,
       address,
@@ -24,6 +32,7 @@ const CompanyForm = ({ onClose }) => {
       body: JSON.stringify(company),
       headers: {
         "Content-Type": "application/json",
+        'Authorization': `Bearer ${user.token}`
       },
     });
     const json = await response.json();
