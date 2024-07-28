@@ -1,19 +1,27 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../styles/static/StocksDashboard.css";
 import StockForm from "../components/Forms/StocksForm";
-import { useCompaniesContext } from './../hooks/useCompaniesContext';
+import ButtonBar from '../components/ButtonBar'
+import { useCompaniesContext } from "./../hooks/useCompaniesContext";
+import { useAuthContext } from './../hooks/useAuthContext';
 
 export default function StocksDashboard() {
   const { companyId } = useParams();
   const [stocks, setStocks] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const { dispatch } = useCompaniesContext();
+  const { user } = useAuthContext();
 
   const fetchStocks = async () => {
     try {
       const response = await fetch(
-        `/api/dashboard/companies/${companyId}/stocks`
+        `/api/dashboard/companies/${companyId}/stocks`,
+        {
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
+        }
       );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -26,8 +34,10 @@ export default function StocksDashboard() {
   };
 
   useEffect(() => {
-    fetchStocks();
-  }, [companyId, dispatch]);
+    if (user && companyId) {
+      fetchStocks();
+    }
+  }, [user, companyId, dispatch]);
 
   useEffect(() => {
     if (showForm) {
@@ -49,6 +59,7 @@ export default function StocksDashboard() {
     <>
       <div className="global"></div>
       <main className="app_stocks_dashboard">
+        <ButtonBar companyId={companyId}/>
         <div className="stocks_dashboard_heading sora">
           All your stocks are listed <br /> here
           <button
@@ -61,10 +72,7 @@ export default function StocksDashboard() {
         <div className="stocks_dashboard">
           <div className="stocks_dashboard_blocks">
             {stocks.map((stock, index) => (
-              <div
-                className="stocks_dashboard_block"
-                key={stock._id || index}
-              >
+              <div className="stocks_dashboard_block" key={stock._id || index}>
                 <div className="stocks_dashboard_block_name sora">
                   <div className="block_name_name">{stock.name}</div>
                   <div className="block_name_tag">#{index + 1}</div>
