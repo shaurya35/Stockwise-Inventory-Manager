@@ -33,44 +33,54 @@ Stockwise is a cutting-edge web application designed for efficient inventory man
 
 ## Setup
 
-1. Clone the repository:
+Clone the repository:
 
 ```bash
 git clone https://github.com/shaurya35/Stockwise-Inventory-Manager
 cd Stockwise-Inventory-Manager
 ```
+## Setup Client
 
-2. Move to client folder:
+1. Move to client folder:
 
 ```bash
 cd client
 ```
 
-3.Install the dependencies:
+2.Install the dependencies:
 ```bash
 npm install
 ```
 
-4.Run client side:
+3.Run client Side:
 ```bash
 npm run dev
 ```
+## Setup Server
 
-5.Move to server folder:
+1.Move to server folder:
 
 ```bash
 cd server
 ```
 
-6.Install the dependencies:
+2.Install the dependencies:
 ```bash
 npm install
 ```
-
-##Usage
+3. give .env credentials:
+```bash
+PORT=
+MONGO_URI=
+JWT_SECRET=
+TWILIO_ACCOUNT_SID=
+TWILIO_AUTH_TOKEN=
+```
+4.Run Server Side:
 ```bash
 npm run dev
 ```
+## Usage
 
 Access the app in your web browser at `http://localhost:5173/`.
 
