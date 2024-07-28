@@ -4,8 +4,9 @@ const mongoose = require("mongoose");
 const getPrediction = async (req, res) => {
   const { companyId } = req.params;
   const stocks = await Stock.find({ company: companyId });
+
   let predictionData = [];
-  
+
   for (let stock of stocks) {
     const percentageSold = (stock.unitsSold / stock.totalUnits) * 100;
     let purchaseQuantity = 0;
@@ -25,3 +26,5 @@ const getPrediction = async (req, res) => {
 };
 
 module.exports = getPrediction;
+
+
