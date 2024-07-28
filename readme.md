@@ -43,7 +43,7 @@ cd Stockwise-Inventory-Manager
 ```
 ## Client Setup
 
-Move to client folder:
+Redirect to client:
 
 ```bash
 cd client
@@ -54,13 +54,13 @@ Install the dependencies:
 npm install
 ```
 
-Run client Side:
+Run client Interface:
 ```bash
 npm run dev
 ```
 ## Server Setup
 
-Move to server folder:
+Redirect to server:
 
 ```bash
 cd server
@@ -71,7 +71,7 @@ Install the dependencies:
 npm install
 ```
 
-give .env credentials:
+Create a .env file:
 ```bash
 PORT=
 MONGO_URI=
@@ -79,7 +79,8 @@ JWT_SECRET=
 TWILIO_ACCOUNT_SID=
 TWILIO_AUTH_TOKEN=
 ```
-4. Run Server Side:
+
+4. Run Server:
 ```bash
 npm run dev
 ```
