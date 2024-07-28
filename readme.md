@@ -1,3 +1,5 @@
+![Example Image](server/views/banner.png)
+
 # Stockwise-Inventory-Manager
 
 Stockwise is a cutting-edge web application designed for efficient inventory management through advanced demand forecasting techniques. This project addresses the critical challenges organizations face in predicting demand, managing stock levels, and ensuring customer satisfaction.
@@ -21,7 +23,7 @@ Stockwise is a cutting-edge web application designed for efficient inventory man
 
 - Demand Forecasting- Predict future product demand based on historical data.
 - Inventory Tracking- Monitor stock levels, sales, and inventory health.
-- Real Time Wholesaler Chat- Collaborate with wholesalers in real-time to streamline procurement processes.
+- Real Time Ordering Predicted Items - Collaborate with wholesalers in real-time to streamline procurement processes with one click .
 
 ## Dependencies
 
@@ -38,14 +40,34 @@ git clone https://github.com/shaurya35/Stockwise-Inventory-Manager
 cd Stockwise-Inventory-Manager
 ```
 
-2. Install the dependencies:
+2. Move to client folder:
 
+```bash
+cd client
+```
+
+3.Install the dependencies:
 ```bash
 npm install
 ```
 
-## Usage
+4.Run client side:
+```bash
+npm run dev
+```
 
+5.Move to server folder:
+
+```bash
+cd server
+```
+
+6.Install the dependencies:
+```bash
+npm install
+```
+
+##Usage
 ```bash
 npm run dev
 ```
