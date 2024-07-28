@@ -49,15 +49,11 @@ function App() {
             />
             <Route
               path="/dashboard/companies/:companyId/stocks"
-              element={
-                user ? <StocksDashboard /> : <Navigate to="/auth/signup" />
-              }
+              element={<StocksDashboard />}
             />
             <Route
               path="/dashboard/companies/:companyId/data"
-              element={
-                user ? <DataDashboard /> : <Navigate to="/auth/signup" />
-              }
+              element={<DataDashboard />}
             />
             <Route
               path="/dashboard/companies/:companyId/prediction"

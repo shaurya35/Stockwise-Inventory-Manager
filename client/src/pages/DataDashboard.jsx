@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../styles/static/Dashboard.css";
+import "../styles/static/DataDashboard.css";
 import { useAuthContext } from "./../hooks/useAuthContext";
 
 export default function DataDashboard() {
@@ -51,51 +51,51 @@ export default function DataDashboard() {
   return (
     <>
       <div className="global"></div>
-      <main className="app_company_dashboard">
-        <div className="company_dashboard_heading sora">Data Dashboard</div>
-        <div className="company_dashboard">
-          <div className="company_dashboard_blocks">
+      <main className="app_data_dashboard">
+        <div className="data_dashboard_heading sora">Data Dashboard</div>
+        <div className="data_dashboard">
+          <div className="data_dashboard_blocks">
             {data && (
               <>
-                <div className="company_dashboard_block">
-                  <div className="company_dashboard_block_name sora">
+                <div className="data_dashboard_block">
+                  <div className="data_dashboard_block_name sora">
                     Top Selling Product: {data.topSellingProduct.name}
                   </div>
-                  <div className="company_dashboard_block_address outfit">
+                  <div className="data_dashboard_block_address outfit">
                     Units Sold: {data.topSellingProduct.unitsSold}
                   </div>
-                  <div className="company_dashboard_block_contactEmail outfit">
+                  <div className="data_dashboard_block_contactEmail outfit">
                     Revenue: ₹
                     {data.topSellingProduct.unitsSold *
                       data.topSellingProduct.pricePerUnit}
                   </div>
                 </div>
-                <div className="company_dashboard_block">
-                  <div className="company_dashboard_block_name sora">
+                <div className="data_dashboard_block">
+                  <div className="data_dashboard_block_name sora">
                     Least Selling Product: {data.leastSellingProduct.name}
                   </div>
-                  <div className="company_dashboard_block_address outfit">
+                  <div className="data_dashboard_block_address outfit">
                     Units Sold: {data.leastSellingProduct.unitsSold}
                   </div>
-                  <div className="company_dashboard_block_contactEmail outfit">
+                  <div className="data_dashboard_block_contactEmail outfit">
                     Revenue: ₹
                     {data.leastSellingProduct.unitsSold *
                       data.leastSellingProduct.pricePerUnit}
                   </div>
                 </div>
-                <div className="company_dashboard_block">
-                  <div className="company_dashboard_block_name sora">
+                <div className="data_dashboard_block">
+                  <div className="data_dashboard_block_name sora">
                     Total Net Revenue:
                   </div>
-                  <div className="company_dashboard_block_address outfit">
-                    ₹ {data.totalNetRevenue}
+                  <div className="data_dashboard_block_address outfit">
+                  ₹  {data.totalNetRevenue}
                   </div>
                 </div>
-                <div className="company_dashboard_block">
-                  <div className="company_dashboard_block_name sora">
+                <div className="data_dashboard_block">
+                  <div className="data_dashboard_block_name sora">
                     Inventory Turnover:
                   </div>
-                  <div className="company_dashboard_block_address outfit">
+                  <div className="data_dashboard_block_address outfit">
                     {data.inventoryTurnover}
                   </div>
                 </div>

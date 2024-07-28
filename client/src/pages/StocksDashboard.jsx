@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "../styles/static/Dashboard.css";
+import "../styles/static/StocksDashboard.css";
 import StockForm from "../components/Forms/StocksForm";
 import { useCompaniesContext } from './../hooks/useCompaniesContext';
 
@@ -48,36 +48,36 @@ export default function StocksDashboard() {
   return (
     <>
       <div className="global"></div>
-      <main className="app_company_dashboard">
-        <div className="company_dashboard_heading sora">
+      <main className="app_stocks_dashboard">
+        <div className="stocks_dashboard_heading sora">
           All your stocks are listed <br /> here
           <button
-            className="company_dashboard_button sora"
+            className="stocks_dashboard_button sora"
             onClick={() => setShowForm(true)}
           >
             Add Stocks
           </button>
         </div>
-        <div className="company_dashboard">
-          <div className="company_dashboard_blocks">
+        <div className="stocks_dashboard">
+          <div className="stocks_dashboard_blocks">
             {stocks.map((stock, index) => (
               <div
-                className="company_dashboard_block"
+                className="stocks_dashboard_block"
                 key={stock._id || index}
               >
-                <div className="company_dashboard_block_name sora">
+                <div className="stocks_dashboard_block_name sora">
                   <div className="block_name_name">{stock.name}</div>
                   <div className="block_name_tag">#{index + 1}</div>
                 </div>
-                <div className="company_dashboard_block_address outfit">
+                <div className="stocks_dashboard_block_address outfit">
                   <span className="stock_span">Total Units: </span>
                   {stock.totalUnits}
                 </div>
-                <div className="company_dashboard_block_contactEmail outfit">
+                <div className="stocks_dashboard_block_contactEmail outfit">
                   <span className="stock_span">Units Sold: </span>
                   {stock.unitsSold}
                 </div>
-                <div className="company_dashboard_block_contactNumber outfit">
+                <div className="stocks_dashboard_block_contactNumber outfit">
                   <span className="stock_span">Price Per Unit: </span>
                   {stock.pricePerUnit}
                 </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../styles/static/Dashboard.css";
+import "../styles/static/PredictionDashboard.css";
 import { useAuthContext } from "./../hooks/useAuthContext";
 
 export default function PredictionDashboard() {
@@ -48,18 +48,18 @@ export default function PredictionDashboard() {
   return (
     <>
       <div className="global"></div>
-      <main className="app_company_dashboard">
-        <div className="company_dashboard_heading sora">
+      <main className="app_prediction_dashboard">
+        <div className="prediction_dashboard_heading sora">
           Prediction Dashboard
         </div>
-        <div className="company_dashboard">
-          <div className="company_dashboard_blocks">
+        <div className="prediction_dashboard">
+          <div className="prediction_dashboard_blocks">
             {predictions && predictions.map((prediction, index) => (
-              <div className="company_dashboard_block" key={index}>
-                <div className="company_dashboard_block_name sora">
+              <div className="prediction_dashboard_block" key={index}>
+                <div className="prediction_dashboard_block_name sora">
                   Product: {prediction.stockName}
                 </div>
-                <div className="company_dashboard_block_address outfit">
+                <div className="prediction_dashboard_block_address outfit">
                   Purchase Quantity: {prediction.purchaseQuantity}
                 </div>
               </div>
