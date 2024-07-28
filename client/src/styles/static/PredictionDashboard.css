@@ -14,7 +14,7 @@
   align-items: start;
   flex-wrap: wrap;
   background-color: var(--background-color);
-  padding-top: 5rem;
+  /* padding-top: 5rem; */
   /* background-color: red; */
 }
 
@@ -137,7 +137,7 @@
   }
 
   .app_prediction_dashboard {
-    padding-top: 2rem;
+    padding-top: 0rem;
   }
 }
 

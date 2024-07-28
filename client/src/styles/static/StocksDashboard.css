@@ -7,6 +7,48 @@
   z-index: -1000;
 }
 
+.stocks_dashboard_menu {
+  height: 5rem;
+  /* background-color: blue; */
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  flex-wrap: wrap;
+}
+
+.stocks_dashboard_menu_inner_1 {
+  width: 32.5rem;
+  /* background-color: red; */
+}
+
+.stocks_dashboard_menu_inner_2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 32.5rem;
+  gap: 0.3rem;
+  margin-bottom: 0.4rem;
+  /* background-color: blue; */
+}
+
+.stocks_dashboard_menu_inner_button {
+  font-size: 1.1rem;
+  line-height: 1.2;
+  font-weight: 500;
+  background-color: var(--button);
+  color: var(--button-text);
+  padding: 0.6rem 0.7rem;
+  border: 0.15rem solid var(--background-color);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  width: 7.5rem;
+}
+
 /* dashboard layout  */
 .app_stocks_dashboard {
   display: flex;
@@ -14,7 +56,8 @@
   align-items: start;
   flex-wrap: wrap;
   background-color: var(--background-color);
-  padding-top: 5rem;
+  /* padding-top: 5rem; */
+  /* background-color: red; */
 }
 
 /* dashboard layout inner  */
@@ -26,6 +69,7 @@
   justify-content: center;
   align-items: start;
   height: inherit;
+  /* background-color: red; */
 }
 
 /* dashboard heading  */
@@ -133,17 +177,17 @@
   }
 
   .app_stocks_dashboard {
-    padding-top: 2rem;
+    padding-top: 0rem;
   }
 }
 
 @media (max-width: 575px) {
   .stocks_dashboard_heading {
-    font-size: 1.8rem;
+    /* font-size: 1.8rem; */
     text-align: start;
     justify-content: start;
     align-items: start;
-    margin-left: 1rem;
+    margin-left: 1.2rem;
   }
 
   .stocks_dashboard_block {
@@ -172,5 +216,23 @@
     padding: 2rem;
     margin-bottom: 1rem;
     width: 90vw;
+  }
+
+  .stocks_dashboard_menu_inner_2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 32.5rem;
+    gap: 0.1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .stocks_dashboard_menu_inner_button {
+    font-size: 0.9rem;
+    line-height: 1.2;
+    font-weight: 500;
+    width: 6.5rem;
   }
 }
