@@ -67,6 +67,7 @@ const companyRoutes = require("./routes/companyRoutes.js");
 const stockRoutes = require("./routes/stockRoutes.js");
 const authRoutes = require("./routes/authRoutes.js");
 const dataRoutes = require("./routes/dataRoutes.js");
+const predictionRoutes = require("./routes/predictionRoutes.js");
 
 // Base route
 app.get("/", (req, res) => {
@@ -77,6 +78,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/dashboard/companies", companyRoutes);
 app.use("/api/dashboard/companies/data", dataRoutes);
+app.use("/api/dashboard/companies/prediction", predictionRoutes);
 app.use("/api/dashboard/companies/:companyId/stocks", stockRoutes);
 
 // Error handling middleware
