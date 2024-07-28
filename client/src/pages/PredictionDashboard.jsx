@@ -1,0 +1,72 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import "../styles/static/Dashboard.css";
+import { useAuthContext } from "./../hooks/useAuthContext";
+
+export default function PredictionDashboard() {
+  const { user } = useAuthContext();
+  const { companyId } = useParams();
+  const [predictions, setPredictions] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPredictions = async () => {
+      try {
+        const response = await fetch(`/api/dashboard/companies/prediction/${companyId}`, {
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
+        });
+        const json = await response.json();
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        setPredictions(json);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (user && companyId) {
+      fetchPredictions();
+    }
+  }, [user, companyId]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  return (
+    <>
+      <div className="global"></div>
+      <main className="app_company_dashboard">
+        <div className="company_dashboard_heading sora">
+          Prediction Dashboard
+        </div>
+        <div className="company_dashboard">
+          <div className="company_dashboard_blocks">
+            {predictions && predictions.map((prediction, index) => (
+              <div className="company_dashboard_block" key={index}>
+                <div className="company_dashboard_block_name sora">
+                  Product: {prediction.stockName}
+                </div>
+                <div className="company_dashboard_block_address outfit">
+                  Purchase Quantity: {prediction.purchaseQuantity}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </main>
+    </>
+  );
+}
