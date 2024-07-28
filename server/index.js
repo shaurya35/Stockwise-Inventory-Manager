@@ -34,8 +34,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/dashboard/companies", companyRoutes);
 app.use("/api/dashboard/companies/data", dataRoutes);
 app.use("/api/dashboard/companies/prediction", predictionRoutes);
-app.use("/api/dashboard/companies/:companyId/stocks", stockRoutes);
 app.use("/api/dashboard/companies/chat", whatsappRoutes);
+app.use("/api/dashboard/companies/:companyId/stocks", stockRoutes);
 
 // Error handling middleware
 app.use(errorHandler);

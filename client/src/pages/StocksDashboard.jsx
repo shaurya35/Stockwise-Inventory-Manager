@@ -2,9 +2,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../styles/static/StocksDashboard.css";
 import StockForm from "../components/Forms/StocksForm";
-import ButtonBar from '../components/ButtonBar'
+import ButtonBar from "../components/ButtonBar";
 import { useCompaniesContext } from "./../hooks/useCompaniesContext";
-import { useAuthContext } from './../hooks/useAuthContext';
+import { useAuthContext } from "./../hooks/useAuthContext";
 
 export default function StocksDashboard() {
   const { companyId } = useParams();
@@ -19,8 +19,8 @@ export default function StocksDashboard() {
         `/api/dashboard/companies/${companyId}/stocks`,
         {
           headers: {
-            'Authorization': `Bearer ${user.token}`
-          }
+            Authorization: `Bearer ${user.token}`,
+          },
         }
       );
       if (!response.ok) {
@@ -59,7 +59,7 @@ export default function StocksDashboard() {
     <>
       <div className="global"></div>
       <main className="app_stocks_dashboard">
-        <ButtonBar companyId={companyId}/>
+        <ButtonBar companyId={companyId} />
         <div className="stocks_dashboard_heading sora">
           All your stocks are listed <br /> here
           <button

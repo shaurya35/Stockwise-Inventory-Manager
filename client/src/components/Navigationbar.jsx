@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import ContactForm from "../components/Forms/Contactform";
 import { useLogout } from "../hooks/useLogout";
@@ -28,7 +28,6 @@ export default function Navigationbar() {
     window.location.href = "/";
   };
 
-  const isAuthRoute = location.pathname.startsWith("/auth");
   const isHomeRoute = location.pathname === "/";
 
   return (

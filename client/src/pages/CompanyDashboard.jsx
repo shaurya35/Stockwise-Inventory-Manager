@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import "../styles/static/CompanyDashboard.css";
 import CompanyForm from "../components/Forms/CompanyForm";
 import { useCompaniesContext } from "./../hooks/useCompaniesContext";
-import { useAuthContext } from './../hooks/useAuthContext';
+import { useAuthContext } from "./../hooks/useAuthContext";
 
 export default function CompanyDashboard() {
   const { companies, dispatch } = useCompaniesContext();
-  const {user} = useAuthContext();
+  const { user } = useAuthContext();
   const [showForm, setShowForm] = useState(false);
   const navigate = useNavigate();
 
@@ -15,8 +15,8 @@ export default function CompanyDashboard() {
     const fetchCompanies = async () => {
       const response = await fetch("/api/dashboard/companies", {
         headers: {
-          'Authorization': `Bearer ${user.token}`
-        }
+          Authorization: `Bearer ${user.token}`,
+        },
       });
       const json = await response.json();
 
@@ -28,10 +28,9 @@ export default function CompanyDashboard() {
         dispatch({ type: "SET_COMPANIES", payload: json });
       }
     };
-    if(user){
+    if (user) {
       fetchCompanies();
     }
-    
   }, [dispatch, user]);
 
   useEffect(() => {

@@ -44,20 +44,20 @@ const isOwner = async (req, res, next) => {
 const isAuthenticated = async (req, res, next) => {
   try {
       const authHeader = req.header('Authorization');
-      console.log('Authorization Header:', authHeader); // Debugging statement
+      console.log('Authorization Header:', authHeader); 
 
       if (!authHeader || !authHeader.startsWith('Bearer ')) {
           return res.status(401).json({ error: 'No token provided or token is invalid' });
       }
 
       const token = authHeader.replace('Bearer ', '');
-      console.log('Token:', token); // Debugging statement
+      console.log('Token:', token); 
 
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      console.log('Decoded Token:', decoded); // Debugging statement
+      console.log('Decoded Token:', decoded); 
 
       const user = await User.findById(decoded._id);
-      console.log('User:', user); // Debugging statement
+      console.log('User:', user); 
 
       if (!user) {
           return res.status(401).json({ error: 'Invalid token' });
@@ -66,7 +66,7 @@ const isAuthenticated = async (req, res, next) => {
       req.user = user;
       next();
   } catch (error) {
-      console.error('Authentication Error:', error); // Debugging statement
+      console.error('Authentication Error:', error); 
       res.status(401).json({ error: 'Unauthorized access' });
   }
 };

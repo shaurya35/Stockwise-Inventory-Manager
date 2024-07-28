@@ -2,7 +2,7 @@ const User = require("../models/userModel.js");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-// Ensure that JWT_SECRET is defined
+// ensures that JWT_SECRET is defined
 if (!process.env.JWT_SECRET) {
     throw new Error("JWT_SECRET environment variable is not set.");
 }
@@ -47,7 +47,7 @@ const signup = async (req, res) => {
         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.status(201).json({ token });
     } catch (error) {
-        console.error("Signup error:", error); // Log the error for debugging
+        console.error("Signup error:", error);
         res.status(500).json({ error: error.message });
     }
 };

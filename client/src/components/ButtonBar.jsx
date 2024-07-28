@@ -34,10 +34,10 @@ export default function ButtonBar({ companyId }) {
                         Prediction
                     </button>
                 )}
-                {currentPath !== `/chat` && (
+                {currentPath !== `/dashboard/companies/${companyId}/chat` && (
                     <button
                         className="stocks_dashboard_menu_inner_button sora"
-                        onClick={() => navigate(`/chat`)}
+                        onClick={() => navigate(`/dashboard/companies/${companyId}/chat`)}
                     >
                         Chat
                     </button>

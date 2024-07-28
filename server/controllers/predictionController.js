@@ -1,5 +1,4 @@
 const Stock = require("../models/stockModel.js");
-const mongoose = require("mongoose");
 
 const getPrediction = async (req, res) => {
   const { companyId } = req.params;

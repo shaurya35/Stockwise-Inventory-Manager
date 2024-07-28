@@ -11,7 +11,6 @@ const sendWhatsAppMessage = async (req, res) => {
   const predictionData = await getPredictions(companyId);
   
   if (req.method === 'GET') {
-    // Return prediction data in the response body for GET requests
     return res.status(200).json(predictionData);
   }
   
@@ -20,7 +19,7 @@ const sendWhatsAppMessage = async (req, res) => {
   const message = await client.messages.create({
     from: "whatsapp:+14155238886",
     body: messageBody,
-    to: "whatsapp:+919142681475",  // This should be dynamic based on retailer's WhatsApp number
+    to: "whatsapp:+918307354700",  
   });
 
   res.status(200).json({ message: "WhatsApp message sent", predictionData });

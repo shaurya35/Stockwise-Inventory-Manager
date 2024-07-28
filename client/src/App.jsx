@@ -54,11 +54,11 @@ function App() {
             />
             <Route
               path="/dashboard/companies/:companyId/data"
-              element={ <DataDashboard /> }
+              element={<DataDashboard />}
             />
             <Route
               path="/dashboard/companies/:companyId/prediction"
-              element={ <PredictionDashboard /> }
+              element={<PredictionDashboard />}
             />
 
             <Route
@@ -71,7 +71,7 @@ function App() {
                 <Navigate to="/dashboard/companies/:companyId/stocks" replace />
               }
             />
-            <Route path="*" element={<Navigate to="/" />} />
+            {/* <Route path="*" element={<Navigate to="/" />} /> */}
           </Routes>
         </div>
       </BrowserRouter>

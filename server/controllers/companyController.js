@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Company = require("../models/companyModel.js");
 
-// Get all companies created by the authenticated user
+// Get all companies 
 const getCompanies = async (req, res) => {
   try {
     const companies = await Company.find({ owner: req.user._id });
