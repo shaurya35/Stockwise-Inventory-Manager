@@ -136,7 +136,7 @@ export default function Homepage() {
               </li>
               <li className="list_items">
                 <a
-                  href="https://www.linkedin.com/in/om-shankar-deshmukh-7431b9245/"
+                  href="https://www.linkedin.com/in/satyamkumar1018/"
                   className="items_links"
                   target="_blank"
                 >
