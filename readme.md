@@ -14,8 +14,6 @@ Stockwise is a cutting-edge web application designed for efficient inventory man
 - [Server Setup](#Server-Setup)
 - [Usage](#usage)
 - [Contributors](#contributors)
-- [Acknowledgments](#acknowledgments)
-
 
 ## Overview
 
