@@ -71,7 +71,7 @@ function App() {
                 <Navigate to="/dashboard/companies/:companyId/stocks" replace />
               }
             />
-            {/* <Route path="*" element={<Navigate to="/" />} /> */}
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
       </BrowserRouter>
