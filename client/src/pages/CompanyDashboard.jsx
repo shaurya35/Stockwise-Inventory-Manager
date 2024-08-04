@@ -22,20 +22,33 @@ export default function CompanyDashboard() {
         const response = await fetch("/api/dashboard/companies", {
           method: "GET",
           headers: {
-            "Authorization": `Bearer ${user.token}`,
-            "Content-Type": "application/json"
+            Authorization: `Bearer ${user.token}`,
+            "Content-Type": "application/json",
           },
         });
 
-        if (!response.ok) {
-          // Handle non-OK responses
+        // Check if the content-type is JSON
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
           const text = await response.text(); // Read response as text
-          console.error(`HTTP error! status: ${response.status}, body: ${text}`);
-          throw new Error(`HTTP error! status: ${response.status}`);
+          console.error(
+            `Unexpected content-type: ${contentType}, body: ${text}`
+          );
+          throw new Error(`Unexpected content-type: ${contentType}`);
         }
 
         // Attempt to parse JSON response
         const json = await response.json();
+
+        if (!response.ok) {
+          // Handle non-OK responses
+          console.error(
+            `HTTP error! status: ${response.status}, body: ${JSON.stringify(
+              json
+            )}`
+          );
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
         // Dispatch action with received JSON data
         dispatch({ type: "SET_COMPANIES", payload: json });
