@@ -4,7 +4,7 @@ const wrapAsync = require("../middlewares/wrapAsync.js");
 const { isAuthenticated } = require("../middlewares/authMiddleware.js");
 const {
   sendWhatsAppMessage
-} = require("../controllers/whatsappController.js");
+} = require("../controllers/chatController.js");
 
 router.get("/:companyId", isAuthenticated, wrapAsync(sendWhatsAppMessage));
 router.post("/:companyId", isAuthenticated, wrapAsync(sendWhatsAppMessage));

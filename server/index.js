@@ -22,7 +22,7 @@ const stockRoutes = require("./routes/stockRoutes.js");
 const authRoutes = require("./routes/authRoutes.js");
 const dataRoutes = require("./routes/dataRoutes.js");
 const predictionRoutes = require("./routes/predictionRoutes.js");
-const whatsappRoutes = require("./routes/whatsappRoutes.js");
+const whatsappRoutes = require("./routes/chatRoutes.js");
 
 // Base route
 app.get("/", (req, res) => {
