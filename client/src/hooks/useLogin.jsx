@@ -5,7 +5,7 @@ import { useAuthContext } from './useAuthContext';
 const fetchWithTimeout = (url, options, timeout = 30000) => {
   return new Promise((resolve, reject) => {
     const timer = setTimeout(() => {
-      reject(new Error("Request timed out"));
+      reject(new Error('Request timed out'));
     }, timeout);
 
     fetch(url, options)
@@ -51,10 +51,10 @@ export const useLogin = () => {
 
       const json = JSON.parse(responseText);
 
-      // save the user to local storage
+      // Save the user to local storage
       localStorage.setItem('user', JSON.stringify(json));
 
-      // update the auth context
+      // Update the auth context
       dispatch({ type: 'LOGIN', payload: json });
 
       // Redirect after successful login
