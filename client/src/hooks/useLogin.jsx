@@ -37,12 +37,19 @@ export const useLogin = () => {
         body: JSON.stringify({ email, password }),
       });
 
+      const responseText = await response.text();
+
       if (!response.ok) {
-        const errorResponse = await response.json();
-        throw new Error(errorResponse.error);
+        let errorResponse;
+        try {
+          errorResponse = JSON.parse(responseText);
+        } catch (e) {
+          errorResponse = { error: responseText };
+        }
+        throw new Error(errorResponse.error || 'An error occurred');
       }
 
-      const json = await response.json();
+      const json = JSON.parse(responseText);
 
       // save the user to local storage
       localStorage.setItem('user', JSON.stringify(json));
