@@ -1,11 +1,17 @@
 //express config
 const express = require('express');
 const mongoose = require("mongoose");
+const cors = require('cors');
 require('dotenv').config();
 
 //express parse
 const app = express();
 app.use(express.json());
+
+//use CORS middleware
+app.use(cors({
+  origin: 'https://stockwise-fvkx.onrender.com/' 
+}));
 
 //global error handler
 const errorHandler = require('./middlewares/ExpressError.js');
