@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/static/CompanyDashboard.css";
 import CompanyForm from "../components/Forms/CompanyForm";
-import { useCompaniesContext } from "./../hooks/useCompaniesContext";
-import { useAuthContext } from "./../hooks/useAuthContext";
+import { useCompaniesContext } from "../hooks/useCompaniesContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function CompanyDashboard() {
   const { companies, dispatch } = useCompaniesContext();
@@ -13,24 +13,38 @@ export default function CompanyDashboard() {
 
   useEffect(() => {
     const fetchCompanies = async () => {
-      const response = await fetch("/api/dashboard/companies", {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-      const json = await response.json();
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      if (!user) {
+        console.error("User is not authenticated");
+        return;
       }
 
-      if (response.ok) {
+      try {
+        const response = await fetch("/api/dashboard/companies", {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${user.token}`,
+            "Content-Type": "application/json"
+          },
+        });
+
+        if (!response.ok) {
+          // Handle non-OK responses
+          const text = await response.text(); // Read response as text
+          console.error(`HTTP error! status: ${response.status}, body: ${text}`);
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        // Attempt to parse JSON response
+        const json = await response.json();
+
+        // Dispatch action with received JSON data
         dispatch({ type: "SET_COMPANIES", payload: json });
+      } catch (error) {
+        console.error("Error fetching companies:", error);
       }
     };
-    if (user) {
-      fetchCompanies();
-    }
+
+    fetchCompanies();
   }, [dispatch, user]);
 
   useEffect(() => {
@@ -63,7 +77,7 @@ export default function CompanyDashboard() {
         </div>
         <div className="company_dashboard">
           <div className="company_dashboard_blocks">
-            {companies &&
+            {companies && companies.length > 0 ? (
               companies.map((company, index) => (
                 <div
                   className="company_dashboard_block"
@@ -86,7 +100,10 @@ export default function CompanyDashboard() {
                     {company.contactNumber}
                   </div>
                 </div>
-              ))}
+              ))
+            ) : (
+              <p>No companies found.</p>
+            )}
           </div>
         </div>
       </main>
