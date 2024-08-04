@@ -1,7 +1,7 @@
 //express config
 const express = require('express');
 const mongoose = require("mongoose");
-const cors = require('cors');
+// const cors = require('cors');
 require('dotenv').config();
 
 //express parse
@@ -9,11 +9,11 @@ const app = express();
 app.use(express.json());
 
 //use CORS middleware
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+// app.use(cors({
+//   origin: '*',
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization']
+// }));
 
 //global error handler
 const errorHandler = require('./middlewares/ExpressError.js');
