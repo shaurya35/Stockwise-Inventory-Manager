@@ -10,7 +10,9 @@ app.use(express.json());
 
 //use CORS middleware
 app.use(cors({
-  origin: 'https://stockwise-fvkx.onrender.com/' 
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 //global error handler
