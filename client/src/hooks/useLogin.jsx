@@ -31,7 +31,7 @@ export const useLogin = () => {
     setError(null);
 
     try {
-      const response = await fetchWithTimeout('/api/auth/login', {
+      const response = await fetchWithTimeout('https://stockwise-inventory-manager-server.onrender.com/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
