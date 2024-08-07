@@ -23,6 +23,7 @@
 /server/*.sw?
 /server/bun.lockb
 /server/.env
+/server/package-lock.json
 
 # client logs
 /client/logs
@@ -48,3 +49,4 @@
 /client/*.sw?
 /client/bun.lockb
 /client/.env
+/client/package-lock.json
