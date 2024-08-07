@@ -19,7 +19,7 @@ const sendWhatsAppMessage = async (req, res) => {
   const message = await client.messages.create({
     from: "whatsapp:+14155238886",
     body: messageBody,
-    to: "whatsapp:+918307354700",  
+    to: "whatsapp:+919142681475",  
   });
 
   res.status(200).json({ message: "WhatsApp message sent", predictionData });
