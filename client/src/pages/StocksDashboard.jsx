@@ -5,7 +5,6 @@ import StockForm from "../components/Forms/StocksForm";
 import ButtonBar from "../components/ButtonBar";
 import { useCompaniesContext } from "./../hooks/useCompaniesContext";
 import { useAuthContext } from "./../hooks/useAuthContext";
-import Loader from "../components/Loader";
 
 export default function StocksDashboard() {
   const { companyId } = useParams();
