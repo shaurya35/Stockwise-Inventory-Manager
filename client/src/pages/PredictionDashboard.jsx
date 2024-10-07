@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "../styles/static/PredictionDashboard.css";
 import ButtonBar from "../components/ButtonBar";
 import { useAuthContext } from "./../hooks/useAuthContext";
+import Loader from "../components/Loader";
 
 export default function PredictionDashboard() {
   const { user } = useAuthContext();
@@ -42,7 +43,7 @@ export default function PredictionDashboard() {
   }, [user, companyId]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader/>;
   }
 
   if (error) {
