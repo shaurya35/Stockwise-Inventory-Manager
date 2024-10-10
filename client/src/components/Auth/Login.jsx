@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/components/Forms/AuthForm.css"; 
 import { useLogin } from '../../hooks/useLogin'
+import LoginButton from "../LoginButton";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +13,13 @@ const Login = () => {
     e.preventDefault();
     await login(email, password);
   };
+
+  useEffect(() => {
+    console.log("Login component mounted")
+    return () => {
+      console.log("Login component unmounted")
+    }
+  },[])
 
   return (
     <div className="auth-page">
@@ -30,9 +38,13 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="outfit"
           />
-          <button type="submit" disabled={isLoading} className="outfit">
-            Login
-          </button>
+          <LoginButton 
+            title="Login" 
+            isLoading={isLoading}
+            disabled={isLoading}
+            type="submit" 
+          />
+
           {error && <div> {error}</div>}
         </form>
         <p className="outfit">
