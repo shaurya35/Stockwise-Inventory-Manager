@@ -5,6 +5,7 @@ import StockForm from "../components/Forms/StocksForm";
 import ButtonBar from "../components/ButtonBar";
 import { useCompaniesContext } from "./../hooks/useCompaniesContext";
 import { useAuthContext } from "./../hooks/useAuthContext";
+import Loader from "../components/Loader"
 
 export default function StocksDashboard() {
   const { companyId } = useParams();
@@ -12,6 +13,7 @@ export default function StocksDashboard() {
   const [showForm, setShowForm] = useState(false);
   const { dispatch } = useCompaniesContext();
   const { user } = useAuthContext();
+  const [loading, setLoading] = useState(true)
 
   const fetchStocks = async () => {
     try {
@@ -30,12 +32,17 @@ export default function StocksDashboard() {
       setStocks(json);
     } catch (error) {
       console.error("Failed to fetch stocks:", error);
+    }finally{
+      setLoading(false)
     }
   };
 
   useEffect(() => {
     if (user && companyId) {
-      fetchStocks();
+      if (!loading) setLoading(true)
+      setTimeout(() => {
+        fetchStocks();
+      },1000)
     }
   }, [user, companyId, dispatch]);
 
@@ -57,7 +64,8 @@ export default function StocksDashboard() {
 
   return (
     <>
-      <div className="global"></div>
+      <div className="global" style={loading ? { backgroundColor : "white"}: null}></div>
+      { loading ? <Loader/> : (
       <main className="app_stocks_dashboard">
         <ButtonBar companyId={companyId} />
         <div className="stocks_dashboard_heading sora">
@@ -94,6 +102,7 @@ export default function StocksDashboard() {
           </div>
         </div>
       </main>
+      )}
       {showForm && <StockForm onClose={handleFormClose} />}
     </>
   );
