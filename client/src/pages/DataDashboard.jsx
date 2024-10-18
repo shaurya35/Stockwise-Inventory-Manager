@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/static/DataDashboard.css";
 import ButtonBar from "../components/ButtonBar";
-import Loader from "../components/Loader";
 import { useAuthContext } from "./../hooks/useAuthContext";
 
 export default function DataDashboard() {
@@ -41,10 +40,6 @@ export default function DataDashboard() {
       fetchData();
     }
   }, [user, companyId]);
-
-  if (loading) {
-    return <Loader/>;
-  }
 
   if (error) {
     return <div>Error: {error}</div>;

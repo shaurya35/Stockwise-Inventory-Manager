@@ -3,15 +3,13 @@ import { useParams } from "react-router-dom";
 import "../styles/static/PredictionDashboard.css";
 import ButtonBar from "../components/ButtonBar";
 import { useAuthContext } from "./../hooks/useAuthContext";
-import Loader from "../components/Loader";
 
 export default function PredictionDashboard() {
   const { user } = useAuthContext();
   const { companyId } = useParams();
   const [predictions, setPredictions] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     const fetchPredictions = async () => {
       try {
@@ -32,19 +30,13 @@ export default function PredictionDashboard() {
         setPredictions(json);
       } catch (error) {
         setError(error.message);
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
 
     if (user && companyId) {
       fetchPredictions();
     }
   }, [user, companyId]);
-
-  if (loading) {
-    return <Loader/>;
-  }
 
   if (error) {
     return <div>Error: {error}</div>;
