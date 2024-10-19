@@ -15,6 +15,9 @@ const Signup = () => {
     await signup(username, email, password)
   }
 
+  //check if form is filled
+  const isFormFilled = () => username && email && password
+
   return (
     <div className="auth-page">
       <div className="auth-form">
@@ -40,7 +43,7 @@ const Signup = () => {
           />
           <Loader 
             title="Sign up" 
-            isLoading={isLoading}
+            isLoading={isLoading && isFormFilled()}
             disabled={isLoading}
             type="submit" 
           />

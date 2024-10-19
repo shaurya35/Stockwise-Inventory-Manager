@@ -9,7 +9,8 @@ export const useSignup = () => {
   const navigate = useNavigate();
 
   const signup = async (username, email, password) => {
-    setIsLoading(true);
+    
+    setIsLoading(true) 
     setError(null);
 
     const response = await fetch("/api/auth/signup", {

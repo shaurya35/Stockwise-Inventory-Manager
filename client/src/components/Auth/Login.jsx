@@ -9,6 +9,9 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const { login, error, isLoading } = useLogin(); 
 
+  //check if form is filled
+  const isFormFilled = () => email && password
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(email, password);
@@ -33,7 +36,7 @@ const Login = () => {
           />
           <Loader 
             title="Login" 
-            isLoading={isLoading}
+            isLoading={isLoading && isFormFilled()}
             disabled={isLoading}
             type="submit" 
           />
