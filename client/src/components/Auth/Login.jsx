@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/components/Forms/AuthForm.css"; 
 import { useLogin } from '../../hooks/useLogin'
-import Loader from "../Loader";
+import Loader from "../loaders/Loader";
 
 const Login = () => {
   const [email, setEmail] = useState("");
