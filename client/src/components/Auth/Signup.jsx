@@ -2,7 +2,7 @@ import React, { useState} from "react";
 import { Link } from "react-router-dom";
 import "../../styles/components/Forms/AuthForm.css";
 import { useSignup } from '../../hooks/useSignup'
-import LoginButton from "../LoginButton";
+import Loader from "../Loader";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -38,7 +38,7 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="outfit"
           />
-          <LoginButton 
+          <Loader 
             title="Sign up" 
             isLoading={isLoading}
             disabled={isLoading}
