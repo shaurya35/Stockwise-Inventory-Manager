@@ -16,7 +16,7 @@ export default function StocksDashboard() {
   const fetchStocks = async () => {
     try {
       const response = await fetch(
-        `/api/dashboard/companies/${companyId}/stocks`,
+        `https://stockwise-server-8006.onrender.com/api/dashboard/companies/${companyId}/stocks`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

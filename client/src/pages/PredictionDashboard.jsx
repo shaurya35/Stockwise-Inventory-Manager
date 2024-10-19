@@ -14,7 +14,7 @@ export default function PredictionDashboard() {
     const fetchPredictions = async () => {
       try {
         const response = await fetch(
-          `/api/dashboard/companies/prediction/${companyId}`,
+          `https://stockwise-server-8006.onrender.com/api/dashboard/companies/prediction/${companyId}`,
           {
             headers: {
               Authorization: `Bearer ${user.token}`,

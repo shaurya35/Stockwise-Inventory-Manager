@@ -27,7 +27,7 @@ const CompanyForm = ({ onClose }) => {
       contactEmail: email,
       contactNumber: contact,
     };
-    const response = await fetch("/api/dashboard/companies", {
+    const response = await fetch("https://stockwise-server-8006.onrender.com/api/dashboard/companies", {
       method: "POST",
       body: JSON.stringify(company),
       headers: {

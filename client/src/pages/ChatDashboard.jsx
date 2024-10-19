@@ -15,7 +15,7 @@ export default function ChatDashboard() {
   const fetchPredictions = async () => {
     try {
       const response = await fetch(
-        `/api/dashboard/companies/chat/${companyId}`,
+        `https://stockwise-server-8006.onrender.com/api/dashboard/companies/chat/${companyId}`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -36,7 +36,7 @@ export default function ChatDashboard() {
     try {
       setIsSending(true);
       const response = await fetch(
-        `/api/dashboard/companies/chat/${companyId}`,
+        `https://stockwise-server-8006.onrender.com/api/dashboard/companies/chat/${companyId}`,
         {
           method: "POST",
           headers: {
