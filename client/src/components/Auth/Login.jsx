@@ -14,13 +14,6 @@ const Login = () => {
     await login(email, password);
   };
 
-  useEffect(() => {
-    console.log("Login component mounted")
-    return () => {
-      console.log("Login component unmounted")
-    }
-  },[])
-
   return (
     <div className="auth-page">
       <div className="auth-form">
