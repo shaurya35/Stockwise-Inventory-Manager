@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/components/Forms/AuthForm.css"; 
 import { useLogin } from '../../hooks/useLogin'
+import Loader from "../loaders/Loader";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, error, isLoading } = useLogin(); 
+
+  //check if form is filled
+  const isFormFilled = () => email && password
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,9 +34,13 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="outfit"
           />
-          <button type="submit" disabled={isLoading} className="outfit">
-            Login
-          </button>
+          <Loader 
+            title="Login" 
+            isLoading={isLoading && isFormFilled()}
+            disabled={isLoading}
+            type="submit" 
+          />
+
           {error && <div> {error}</div>}
         </form>
         <p className="outfit">

@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { Link } from "react-router-dom";
 import "../../styles/components/Forms/AuthForm.css";
 import { useSignup } from '../../hooks/useSignup'
+import Loader from "../loaders/Loader";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -13,6 +14,9 @@ const Signup = () => {
     e.preventDefault()
     await signup(username, email, password)
   }
+
+  //check if form is filled
+  const isFormFilled = () => username && email && password
 
   return (
     <div className="auth-page">
@@ -37,9 +41,12 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="outfit"
           />
-          <button type="submit" className="outfit" disabled={isLoading}>
-            Sign Up
-          </button>
+          <Loader 
+            title="Sign up" 
+            isLoading={isLoading && isFormFilled()}
+            disabled={isLoading}
+            type="submit" 
+          />
           {error && <div>{error}</div>}
         </form>
         <p className="outfit">
