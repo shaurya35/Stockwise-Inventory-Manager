@@ -8,8 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "start": "vite --mode production"
+    "preview": "vite preview"
   },
   "dependencies": {
     "gsap": "^3.12.5",

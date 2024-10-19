@@ -1,20 +1,13 @@
+//express config
 const express = require('express');
-const mongoose = require('mongoose');
-const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
+const mongoose = require("mongoose");
 require('dotenv').config();
 
+//express parse
 const app = express();
 app.use(express.json());
 
-// Security middlewares
-app.use(helmet());
-app.use(rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100 // Limit each IP to 100 requests per `window` (here, per 15 minutes)
-}));
-
-// Global error handler
+//global error handler
 const errorHandler = require('./middlewares/ExpressError.js');
 
 // Log all requests

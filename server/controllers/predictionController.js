@@ -26,4 +26,3 @@ const getPrediction = async (req, res) => {
 
 module.exports = getPrediction;
 
-
