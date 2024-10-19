@@ -1,6 +1,7 @@
 //express config
 const express = require('express');
 const mongoose = require("mongoose");
+const cors = require('cors');
 require('dotenv').config();
 
 //express parse
@@ -15,6 +16,14 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
+
+// CORS
+app.use(cors({
+  origin: 'https://stockwise-omega.vercel.app', 
+  methods: 'GET,POST,PUT,DELETE', 
+  allowedHeaders: 'Content-Type, Authorization', 
+}));
+
 
 // Routes
 const companyRoutes = require("./routes/companyRoutes.js");
