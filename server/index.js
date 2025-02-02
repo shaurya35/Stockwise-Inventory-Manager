@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 });
 
 // CORS
-const allowedOrigins = ['https://stockwise-omega.vercel.app', 'stockwise.shauryacodes.me'];
+const allowedOrigins = ['https://stockwise-omega.vercel.app', 'https://stockwise.shauryacodes.me/'];
 
 app.use(cors({
   origin: allowedOrigins, 
