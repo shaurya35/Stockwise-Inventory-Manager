@@ -1,15 +1,15 @@
 //express config
-const express = require('express');
+const express = require("express");
 const mongoose = require("mongoose");
-const cors = require('cors');
-require('dotenv').config();
+const cors = require("cors");
+require("dotenv").config();
 
 //express parse
 const app = express();
 app.use(express.json());
 
 //global error handler
-const errorHandler = require('./middlewares/ExpressError.js');
+const errorHandler = require("./middlewares/ExpressError.js");
 
 // Log all requests
 app.use((req, res, next) => {
@@ -18,14 +18,33 @@ app.use((req, res, next) => {
 });
 
 // CORS
-const allowedOrigins = ['https://stockwise-omega.vercel.app', 'https://stockwise.shauryacodes.me/'];
+const allowedOrigins = [
+  "https://stockwise-omega.vercel.app",
+  "https://stockwise.shauryacodes.me/",
+];
 
-app.use(cors({
-  origin: allowedOrigins, 
-  methods: 'GET,POST,PUT,DELETE', 
-  allowedHeaders: 'Content-Type, Authorization', 
-}));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.error(`Blocked by CORS: ${origin}`);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type, Authorization",
+  })
+)
 
+// app.use(
+//   cors({
+//     origin: allowedOrigins,
+//     methods: "GET,POST,PUT,DELETE",
+//     allowedHeaders: "Content-Type, Authorization",
+//   })
+// );
 
 // Routes
 const companyRoutes = require("./routes/companyRoutes.js");
@@ -37,7 +56,7 @@ const whatsappRoutes = require("./routes/chatRoutes.js");
 
 // Base route
 app.get("/", (req, res) => {
-  res.json('/ route here');
+  res.json("/ route here");
 });
 
 // Use routes
@@ -54,6 +73,8 @@ app.use(errorHandler);
 // Connect to MongoDB and start the server
 mongoose.connect(process.env.MONGO_URI).then(() => {
   app.listen(process.env.PORT, () => {
-    console.log(`Connected to DB and running on port http://localhost:${process.env.PORT}/`);
+    console.log(
+      `Connected to DB and running on port http://localhost:${process.env.PORT}/`
+    );
   });
 });
