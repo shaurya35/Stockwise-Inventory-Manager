@@ -18,8 +18,10 @@ app.use((req, res, next) => {
 });
 
 // CORS
+const allowedOrigins = ['https://stockwise-omega.vercel.app', 'stockwise.shauryacodes.me'];
+
 app.use(cors({
-  origin: 'https://stockwise-omega.vercel.app', 
+  origin: allowedOrigins, 
   methods: 'GET,POST,PUT,DELETE', 
   allowedHeaders: 'Content-Type, Authorization', 
 }));
