@@ -18,27 +18,29 @@ app.use((req, res, next) => {
 });
 
 // CORS
-const allowedOrigins = [
-  "https://stockwise-omega.vercel.app",
-  "http://stockwise-omega.vercel.app",
-  "https://stockwise.shauryacodes.me/",
-  "http://stockwise.shauryacodes.me/",
-];
+// const allowedOrigins = [
+//   "https://stockwise-omega.vercel.app",
+//   "http://stockwise-omega.vercel.app",
+//   "https://stockwise.shauryacodes.me/",
+//   "http://stockwise.shauryacodes.me/",
+// ];
 
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        console.error(`Blocked by CORS: ${origin}`);
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    methods: "GET,POST,PUT,DELETE",
-    allowedHeaders: "Content-Type, Authorization",
-  })
-)
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (!origin || allowedOrigins.includes(origin)) {
+//         callback(null, true);
+//       } else {
+//         console.error(`Blocked by CORS: ${origin}`);
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     methods: "GET,POST,PUT,DELETE",
+//     allowedHeaders: "Content-Type, Authorization",
+//   })
+// )
+
+app.use(cors());
 
 // app.use(
 //   cors({
